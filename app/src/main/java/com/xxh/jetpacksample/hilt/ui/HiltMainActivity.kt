@@ -18,25 +18,28 @@ package com.xxh.jetpacksample.hilt.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.xxh.jetpacksample.JApplication
 import com.xxh.jetpacksample.R
 import com.xxh.jetpacksample.hilt.navigator.AppNavigator
 import com.xxh.jetpacksample.hilt.navigator.Screens
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 /**
  * Main activity of the application.
  *
  * Container for the Buttons & Logs fragments. This activity simply tracks clicks on buttons.
  */
+@AndroidEntryPoint
 class HiltMainActivity : AppCompatActivity() {
 
-    private lateinit var navigator: AppNavigator
+    @Inject
+    lateinit var navigator: AppNavigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hilt_main)
 
-        navigator = (applicationContext as JApplication).serviceLocator.provideNavigator(this)
+       // navigator = (applicationContext as JApplication).serviceLocator.provideNavigator(this)
 
         if (savedInstanceState == null) {
             navigator.navigateTo(Screens.BUTTONS)

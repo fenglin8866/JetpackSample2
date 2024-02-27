@@ -25,17 +25,25 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.xxh.jetpacksample.JApplication
 import com.xxh.jetpacksample.R
+import com.xxh.jetpacksample.hilt.data.LoggerDataSource
 import com.xxh.jetpacksample.hilt.data.LoggerLocalDataSource
+import com.xxh.jetpacksample.hilt.di.InMemoryLogger
 import com.xxh.jetpacksample.hilt.navigator.AppNavigator
 import com.xxh.jetpacksample.hilt.navigator.Screens
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 /**
  * Fragment that displays buttons whose interactions are recorded.
  */
+@AndroidEntryPoint
 class ButtonsFragment : Fragment() {
+    @InMemoryLogger
+    @Inject
+    lateinit var logger: LoggerDataSource
 
-    private lateinit var logger: LoggerLocalDataSource
-    private lateinit var navigator: AppNavigator
+    @Inject
+    lateinit var navigator: AppNavigator
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +53,7 @@ class ButtonsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_buttons, container, false)
     }
 
-    override fun onAttach(context: Context) {
+    /*override fun onAttach(context: Context) {
         super.onAttach(context)
 
         populateFields(context)
@@ -57,7 +65,7 @@ class ButtonsFragment : Fragment() {
 
         navigator = (context.applicationContext as JApplication).
             serviceLocator.provideNavigator(requireActivity())
-    }
+    }*/
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         view.findViewById<Button>(R.id.button1).setOnClickListener {
