@@ -1,8 +1,12 @@
 package com.xxh.jetpacksample
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.xxh.jetpacksample.dagger.main.DaggerMainActivity
 import com.xxh.jetpacksample.databinding.ActivityMainBinding
 import com.xxh.jetpacksample.example.ExampleActivity
 import com.xxh.jetpacksample.hilt.ui.HiltMainActivity
@@ -18,12 +22,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
-        mBinding.exampleDemo.setOnClickListener {
-           startActivity(Intent(this,ExampleActivity::class.java))
-        }
-        mBinding.hiltDemo.setOnClickListener {
-            startActivity(Intent(this,HiltMainActivity::class.java))
+
+        val dataset = arrayOf("Example", "Hilt", "Dagger")
+        val customAdapter = CustomAdapter(dataset)
+        customAdapter.setItemClickCallback {
+            when (it) {
+                0 -> startActivity(Intent(this, ExampleActivity::class.java))
+                1 -> startActivity(Intent(this, HiltMainActivity::class.java))
+                2 -> startActivity(Intent(this, DaggerMainActivity::class.java))
+            }
         }
 
+        val layoutManager = LinearLayoutManager(this)
+        layoutManager.orientation = LinearLayoutManager.VERTICAL
+        mBinding.recyclerView.layoutManager = layoutManager
+        mBinding.recyclerView.adapter = customAdapter
     }
 }
