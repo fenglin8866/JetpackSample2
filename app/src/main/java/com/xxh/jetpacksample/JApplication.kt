@@ -1,21 +1,21 @@
 package com.xxh.jetpacksample
 
 import android.app.Application
+import com.xxh.jetpacksample.dagger.di.AppComponent
+import com.xxh.jetpacksample.dagger.di.DaggerAppComponent
 import com.xxh.jetpacksample.dagger.storage.SharedPreferencesStorage
 import com.xxh.jetpacksample.dagger.user.UserManager
-import com.xxh.jetpacksample.hilt.ServiceLocator
-import dagger.hilt.android.HiltAndroidApp
 
-@HiltAndroidApp
 class JApplication : Application() {
-    /*lateinit var serviceLocator: ServiceLocator
-
-    override fun onCreate() {
-        super.onCreate()
-        serviceLocator = ServiceLocator(applicationContext)
-    }*/
-
-    open val userManager by lazy {
-        UserManager(SharedPreferencesStorage(this))
+    // Instance of the AppComponent that will be used by all the Activities in the project
+    val appComponent: AppComponent by lazy {
+        initializeComponent()
     }
+
+    open fun initializeComponent(): AppComponent {
+        // Creates an instance of AppComponent using its Factory constructor
+        // We pass the applicationContext that will be used as Context in the graph
+        return DaggerAppComponent.factory().create(applicationContext)
+    }
+
 }

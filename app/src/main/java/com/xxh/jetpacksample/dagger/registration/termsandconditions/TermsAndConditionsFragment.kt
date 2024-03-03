@@ -16,6 +16,7 @@
 
 package com.xxh.jetpacksample.dagger.registration.termsandconditions
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,10 +26,21 @@ import androidx.fragment.app.Fragment
 import com.xxh.jetpacksample.dagger.registration.RegistrationActivity
 import com.xxh.jetpacksample.dagger.registration.RegistrationViewModel
 import com.xxh.jetpacksample.R
+import javax.inject.Inject
 
 class TermsAndConditionsFragment : Fragment() {
 
-    private lateinit var registrationViewModel: RegistrationViewModel
+
+    // @Inject annotated fields will be provided by Dagger
+    @Inject
+    lateinit var registrationViewModel: RegistrationViewModel
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        // Grabs the registrationComponent from the Activity and injects this Fragment
+        (activity as RegistrationActivity).registrationComponent.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,7 +49,7 @@ class TermsAndConditionsFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_terms_and_conditions, container, false)
 
-        registrationViewModel = (activity as RegistrationActivity).registrationViewModel
+        //registrationViewModel = (activity as RegistrationActivity).registrationViewModel
 
         view.findViewById<Button>(R.id.next).setOnClickListener {
             registrationViewModel.acceptTCs()

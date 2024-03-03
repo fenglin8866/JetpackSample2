@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 The Android Open Source Project
+ * Copyright (C) 2019 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,17 +14,11 @@
  * limitations under the License.
  */
 
-package com.xxh.jetpacksample.hilt.data
+package com.xxh.jetpacksample.dagger.di
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import javax.inject.Scope
 
-/**
- * Data class that represent the a table in the database.
- */
-@Entity(tableName = "logs")
-data class Log(val msg: String, val timestamp: Long) {
-
-    @PrimaryKey(autoGenerate = true)
-    var id: Long = 0
-}
+@Scope
+@MustBeDocumented
+@Retention(value = AnnotationRetention.RUNTIME)
+annotation class ActivityScope

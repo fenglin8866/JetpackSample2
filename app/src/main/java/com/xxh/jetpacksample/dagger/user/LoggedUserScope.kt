@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 The Android Open Source Project
+ * Copyright (C) 2019 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,22 +14,11 @@
  * limitations under the License.
  */
 
-package com.xxh.jetpacksample.hilt.util
+package com.xxh.jetpacksample.dagger.user
 
-import android.annotation.SuppressLint
-import java.text.SimpleDateFormat
-import java.util.Date
-import javax.inject.Inject
+import javax.inject.Scope
 
-/**
- * String formatter for the log dates.
- */
-class DateFormatter @Inject constructor(){
-
-    @SuppressLint("SimpleDateFormat")
-    private val formatter = SimpleDateFormat("d MMM yyyy HH:mm:ss")
-
-    fun formatDate(timestamp: Long): String {
-        return formatter.format(Date(timestamp))
-    }
-}
+@Scope
+@MustBeDocumented
+@Retention(value = AnnotationRetention.RUNTIME)
+annotation class LoggedUserScope

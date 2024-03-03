@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 The Android Open Source Project
+ * Copyright (C) 2019 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,19 @@
  * limitations under the License.
  */
 
-package com.xxh.jetpacksample.hilt.data
+package com.xxh.jetpacksample.dagger.di
 
-import androidx.room.Database
-import androidx.room.RoomDatabase
+import com.example.android.dagger.login.LoginComponent
+import com.xxh.jetpacksample.dagger.registration.RegistrationComponent
+import com.xxh.jetpacksample.dagger.user.UserComponent
+import dagger.Module
 
-/**
- * SQLite Database for storing the logs.
- */
-@Database(entities = arrayOf(Log::class), version = 1, exportSchema = false)
-abstract class AppDatabase : RoomDatabase() {
-    abstract fun logDao(): LogDao
-}
+// This module tells a Component which are its subcomponents
+@Module(
+    subcomponents = [
+        RegistrationComponent::class,
+        LoginComponent::class,
+        UserComponent::class
+    ]
+)
+class AppSubcomponents

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 The Android Open Source Project
+ * Copyright (C) 2019 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,18 @@
  * limitations under the License.
  */
 
-package com.xxh.jetpacksample.hilt.navigator
+package com.xxh.jetpacksample.dagger.di
 
-/**
- * Available screens.
- */
-enum class Screens {
-    BUTTONS,
-    LOGS
-}
+import com.xxh.jetpacksample.dagger.storage.SharedPreferencesStorage
+import com.xxh.jetpacksample.dagger.storage.Storage
+import dagger.Binds
+import dagger.Module
 
-/**
- * Interfaces that defines an app navigator.
- */
-interface AppNavigator {
-    // Navigate to a given screen.
-    fun navigateTo(screen: Screens)
+// Tells Dagger this is a Dagger module
+@Module
+abstract class StorageModule {
+
+    // Makes Dagger provide SharedPreferencesStorage when a Storage type is requested
+    @Binds
+    abstract fun provideStorage(storage: SharedPreferencesStorage): Storage
 }

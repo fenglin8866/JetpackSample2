@@ -17,12 +17,13 @@
 package com.xxh.jetpacksample.dagger.main
 
 import com.xxh.jetpacksample.dagger.user.UserDataRepository
+import javax.inject.Inject
 
 /**
  * MainViewModel is the ViewModel that [DaggerMainActivity] uses to
  * obtain information of what to show on the screen.
  */
-class DaggerMainViewModel(private val userDataRepository: UserDataRepository) {
+class DaggerMainViewModel @Inject constructor(private val userDataRepository: UserDataRepository) {
 
     val welcomeText: String
         get() = "Hello ${userDataRepository.username}!"

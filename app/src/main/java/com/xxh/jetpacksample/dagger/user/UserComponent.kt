@@ -16,29 +16,24 @@
 
 package com.xxh.jetpacksample.dagger.user
 
-import javax.inject.Inject
-import kotlin.random.Random
+import com.xxh.jetpacksample.dagger.main.DaggerMainActivity
+import com.xxh.jetpacksample.dagger.settings.SettingsActivity
+import dagger.Subcomponent
 
-/**
- * UserDataRepository contains user-specific data such as username and unread notifications.
- */
+// Scope annotation that the UserComponent uses
+// Classes annotated with @LoggedUserScope will have a unique instance in this Component
 @LoggedUserScope
-class UserDataRepository @Inject constructor(private val userManager: UserManager) {
+// Definition of a Dagger subcomponent
+@Subcomponent
+interface UserComponent {
 
-    val username: String
-        get() = userManager.username
-
-    var unreadNotifications: Int
-
-    init {
-        unreadNotifications = randomInt()
+    // Factory to create instances of UserComponent
+    @Subcomponent.Factory
+    interface Factory {
+        fun create(): UserComponent
     }
 
-    fun refreshUnreadNotifications() {
-        unreadNotifications = randomInt()
-    }
-}
-
-fun randomInt(): Int {
-    return Random.nextInt(until = 100)
+    // Classes that can be injected by this Component
+    fun inject(activity: DaggerMainActivity)
+    fun inject(activity: SettingsActivity)
 }

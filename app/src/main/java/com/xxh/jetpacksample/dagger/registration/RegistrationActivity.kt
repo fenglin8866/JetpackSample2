@@ -24,16 +24,30 @@ import com.xxh.jetpacksample.R
 import com.xxh.jetpacksample.dagger.main.DaggerMainActivity
 import com.xxh.jetpacksample.dagger.registration.enterdetails.EnterDetailsFragment
 import com.xxh.jetpacksample.dagger.registration.termsandconditions.TermsAndConditionsFragment
+import javax.inject.Inject
 
 class RegistrationActivity : AppCompatActivity() {
 
+    // Stores an instance of RegistrationComponent so that its Fragments can access it
+    lateinit var registrationComponent: RegistrationComponent
+
+    // @Inject annotated fields will be provided by Dagger
+    @Inject
     lateinit var registrationViewModel: RegistrationViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        // Creates an instance of Registration component by grabbing the factory from the app graph
+        registrationComponent = (application as JApplication).appComponent
+            .registrationComponent().create()
+
+        // Injects this activity to the just created Registration component
+        registrationComponent.inject(this)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
 
-        registrationViewModel = RegistrationViewModel((application as JApplication).userManager)
+       // registrationViewModel = RegistrationViewModel((application as JApplication).userManager)
         supportFragmentManager.beginTransaction()
             .add(R.id.fragment_holder, EnterDetailsFragment())
             .commit()
