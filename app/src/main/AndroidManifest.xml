@@ -13,12 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackSample"
         tools:targetApi="31">
-        <activity
-            android:name=".example.ExampleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".hilt.ui.HiltMainActivity"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -29,6 +24,13 @@
             </intent-filter>
         </activity>
 
+        <!--IOC相关-->
+        <activity
+            android:name=".example.ExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".hilt.ui.HiltMainActivity"
+            android:exported="false" />
         <activity
             android:name=".dagger.main.DaggerMainActivity"
             android:exported="false"
@@ -49,6 +51,9 @@
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"/>
+
+        <activity android:name=".room.codelab.NewWordActivity" />
+        <activity android:name=".room.codelab.RoomMainActivity" />
 
     </application>
 

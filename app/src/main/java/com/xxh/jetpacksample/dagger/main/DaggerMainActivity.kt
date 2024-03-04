@@ -49,7 +49,7 @@ class DaggerMainActivity : AppCompatActivity() {
                 finish()
             }
         } else {
-            setContentView(R.layout.activity_dagger_main)
+            setContentView(R.layout.activity_main_dagger)
 
             mainViewModel = DaggerMainViewModel(userManager.userDataRepository!!)
             setupViews()
