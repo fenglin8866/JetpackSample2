@@ -3,8 +3,8 @@ package com.xxh.jetpacksample
 import android.app.Application
 import com.xxh.jetpacksample.room.codelab.WordRepository
 import com.xxh.jetpacksample.room.codelab.WordRoomDatabase
-import com.xxh.jetpacksample.dagger.storage.SharedPreferencesStorage
-import com.xxh.jetpacksample.dagger.user.UserManager
+import com.xxh.jetpacksample.ioc.dagger.storage.SharedPreferencesStorage
+import com.xxh.jetpacksample.ioc.dagger.user.UserManager
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob

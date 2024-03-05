@@ -4,10 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.xxh.jetpacksample.dagger.main.DaggerMainActivity
+import com.xxh.jetpacksample.ioc.dagger.main.DaggerMainActivity
 import com.xxh.jetpacksample.databinding.ActivityMainBinding
-import com.xxh.jetpacksample.example.ExampleActivity
-import com.xxh.jetpacksample.hilt.ui.HiltMainActivity
+import com.xxh.jetpacksample.ioc.example.ExampleActivity
+import com.xxh.jetpacksample.ioc.hilt.ui.HiltMainActivity
 import com.xxh.jetpacksample.room.codelab.RoomMainActivity
 
 

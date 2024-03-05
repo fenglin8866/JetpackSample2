@@ -26,28 +26,28 @@
 
         <!--IOC相关-->
         <activity
-            android:name=".example.ExampleActivity"
+            android:name=".ioc.example.ExampleActivity"
             android:exported="false" />
         <activity
-            android:name=".hilt.ui.HiltMainActivity"
+            android:name=".ioc.hilt.ui.HiltMainActivity"
             android:exported="false" />
         <activity
-            android:name=".dagger.main.DaggerMainActivity"
+            android:name=".ioc.dagger.main.DaggerMainActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"/>
         <activity
-            android:name=".dagger.registration.RegistrationActivity"
+            android:name=".ioc.dagger.registration.RegistrationActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"/>
         <activity
-            android:name=".dagger.login.LoginActivity"
+            android:name=".ioc.dagger.login.LoginActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"/>
         <activity
-            android:name=".dagger.settings.SettingsActivity"
+            android:name=".ioc.dagger.settings.SettingsActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"/>
