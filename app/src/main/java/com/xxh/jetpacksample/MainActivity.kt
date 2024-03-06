@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.samples.apps.sunflower.GardenActivity
 import com.xxh.jetpacksample.ioc.dagger.main.DaggerMainActivity
 import com.xxh.jetpacksample.databinding.ActivityMainBinding
 import com.xxh.jetpacksample.ioc.example.ExampleActivity
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
 
-        val dataset = arrayOf("Example", "Hilt", "Dagger","Room")
+        val dataset = arrayOf("Example", "Hilt", "Dagger","Room","SunFlower")
         val customAdapter = CustomAdapter(dataset)
         customAdapter.setItemClickCallback {
             when (it) {
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
                 1 -> startActivity(Intent(this, HiltMainActivity::class.java))
                 2 -> startActivity(Intent(this, DaggerMainActivity::class.java))
                 3 -> startActivity(Intent(this, RoomMainActivity::class.java))
+                4 -> startActivity(Intent(this, GardenActivity::class.java))
             }
         }
 
