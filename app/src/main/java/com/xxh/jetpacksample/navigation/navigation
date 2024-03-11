@@ -1,0 +1,21 @@
+概念
+Navigation 是指允许用户导航、进入和退出应用中不同内容片段的交互。
+
+Android Jetpack 的 Navigation 组件包含 Navigation 库、Safe Args Gradle 插件，以及可帮助实现应用导航的工具。
+Navigation 组件可处理各种导航用例，从简单的按钮点击到更复杂的模式（例如应用栏和抽屉式导航栏）。
+
+重要提示 ：Navigation 组件还通过遵循一套既定原则来确保一致且可预测的用户体验。
+
+原理
+
+使用
+   a、Compose
+   b、View
+
+总结
+
+疑问点
+
+扩展点
+
+参考网站

@@ -6,7 +6,7 @@ Commits on Oct 17, 2023
 Enable shrinkResources
 arriolac committed 5 months ago
 ============================
-移除测试，AppStartup，
+移除测试，AppStartup
 
 
 
