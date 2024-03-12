@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_demo"
+    app:startDestination="@id/navigationMainFragment">
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.xxh.jetpacksample.navigation.fragment.fragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_friendsListFragment"
+            app:destination="@id/friendsListFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/friendsListFragment"
+        android:name="com.xxh.jetpacksample.navigation.fragment.fragment.FriendsListFragment"
+        android:label="fragment_friends_list_list"
+        tools:layout="@layout/fragment_friends_list_list" />
+    <fragment
+        android:id="@+id/navigationMainFragment"
+        android:name="com.xxh.jetpacksample.navigation.fragment.fragment.NavigationMainFragment"
+        android:label="fragment_main_navigation"
+        tools:layout="@layout/fragment_main_navigation" >
+        <action
+            android:id="@+id/action_navigationMainFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_navigationMainFragment_to_scrollingFragment"
+            app:destination="@id/scrollingFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/scrollingFragment"
+        android:name="com.xxh.jetpacksample.navigation.fragment.fragment.ScrollingFragment"
+        android:label="fragment_scrolling"
+        tools:layout="@layout/fragment_scrolling" />
+</navigation>

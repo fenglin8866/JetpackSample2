@@ -19,3 +19,39 @@ Navigation 组件可处理各种导航用例，从简单的按钮点击到更复
 扩展点
 
 参考网站
+
+======================================================
+核心：NavHost，NavGraph，NavController
+
+使用
+   界面View框架，基于Fragment实现。
+   1、定义NavHost：导航容器，显示当前导航目的地，不同目的地的交互。
+        xml添加FragmentContainerView组件，添加android:name="androidx.navigation.fragment.NavHostFragment"
+        Activity中使用扩展函数findNavController(R.id.xx)（xml中的FragmentContainerView的id）,将NavHost与NavController关联。
+
+   2、获取NavController:不同目的地之间的协调者，导航不同的目的，处理深层链接，管理导航堆栈
+        Activity中使用扩展函数findNavController(R.id.xx)（xml中的FragmentContainerView的id）,将NavHost与NavController关联。
+
+   3、设计导航图：定义所有的导航目的地和目的地之间的关系.
+   方式一：基于KotlinDSL创建
+
+
+   方式二：基于XML创建
+        使用xml定义导航图，创建navigation目录，创建目的地和定义它们之间的关系（推荐使用导航编辑器）
+        FragmentContainerView添加app:navGraph="@navigation/xxx"
+
+   4、使用导航操作：将用户从一个目的地转到另一个目的地
+          什么是操作？如何创建和使用操作？
+       每项操作都有唯一 ID，并且可以包含其他属性。
+       navController.navigate(R.id.xxx)导航到对应的目的地
+
+   5、其他
+        a、添加过渡动画
+         //退出时：目标目的地执行的动画
+         app:popEnterAnim="@anim/slide_in_left"
+         //退出时：当前目的地执行的动画
+         app:popExitAnim="@anim/slide_out_right"
+         //进入时：目标目的地执行的动画
+         app:enterAnim="@anim/slide_in_right"
+         //进入时：当前目的地执行的动画
+         app:exitAnim="@anim/slide_out_left"
