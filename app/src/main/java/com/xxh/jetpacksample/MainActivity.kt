@@ -9,6 +9,7 @@ import com.xxh.jetpacksample.ioc.dagger.main.DaggerMainActivity
 import com.xxh.jetpacksample.databinding.ActivityMainBinding
 import com.xxh.jetpacksample.ioc.example.ExampleActivity
 import com.xxh.jetpacksample.ioc.hilt.ui.HiltMainActivity
+import com.xxh.jetpacksample.navigation.codelab.navigation.NavigationCodelabMainActivity
 import com.xxh.jetpacksample.navigation.compose.NavigationComposeActivity
 import com.xxh.jetpacksample.navigation.example.donuttracker.NavigationMADSMainActivity
 import com.xxh.jetpacksample.navigation.example.navigationadvancedsample.NavigationAdvancedMainActivity
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
             "NavigationSample",
             "NavigationAdvanced",
             "NavigationMADSkills",
+            "NavigationCodelab",
         )
         val customAdapter = CustomAdapter(dataset)
         customAdapter.setItemClickCallback {
@@ -53,6 +55,7 @@ class MainActivity : AppCompatActivity() {
                 7 -> startActivity(Intent(this, NavigationSampleMainActivity::class.java))
                 8 -> startActivity(Intent(this, NavigationAdvancedMainActivity::class.java))
                 9 -> startActivity(Intent(this, NavigationMADSMainActivity::class.java))
+                10 -> startActivity(Intent(this, NavigationCodelabMainActivity::class.java))
             }
         }
 

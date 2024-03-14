@@ -1,6 +1,5 @@
 package com.xxh.jetpacksample
 
-import android.media.browse.MediaBrowser.ItemCallback
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

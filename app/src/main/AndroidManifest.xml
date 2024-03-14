@@ -86,6 +86,26 @@
                 android:resource="@xml/shortcuts" />
         </activity>
 
+        <activity android:name=".navigation.codelab.navigation.NavigationCodelabMainActivity"
+            android:exported="true">
+
+            <!-- TODO STEP 11.2 -->
+            <!--<nav-graph android:value="@navigation/mobile_navigation" />-->
+            <!-- TODO END STEP 11.2-->
+
+        </activity>
+
+        <receiver android:name=".navigation.codelab.navigation.DeepLinkAppWidgetProvider"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/deep_link_appwidget_info" />
+        </receiver>
+
     </application>
 
 </manifest>
