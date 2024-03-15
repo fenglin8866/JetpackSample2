@@ -10,6 +10,7 @@ import com.xxh.jetpacksample.databinding.ActivityMainBinding
 import com.xxh.jetpacksample.ioc.example.ExampleActivity
 import com.xxh.jetpacksample.ioc.hilt.ui.HiltMainActivity
 import com.xxh.jetpacksample.navigation.codelab.navigation.NavigationCodelabMainActivity
+import com.xxh.jetpacksample.navigation.codelab.wordsapp.WordMainActivity
 import com.xxh.jetpacksample.navigation.compose.NavigationComposeActivity
 import com.xxh.jetpacksample.navigation.example.donuttracker.NavigationMADSMainActivity
 import com.xxh.jetpacksample.navigation.example.navigationadvancedsample.NavigationAdvancedMainActivity
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
             "NavigationAdvanced",
             "NavigationMADSkills",
             "NavigationCodelab",
+            "NavigationWord",
         )
         val customAdapter = CustomAdapter(dataset)
         customAdapter.setItemClickCallback {
@@ -56,6 +58,7 @@ class MainActivity : AppCompatActivity() {
                 8 -> startActivity(Intent(this, NavigationAdvancedMainActivity::class.java))
                 9 -> startActivity(Intent(this, NavigationMADSMainActivity::class.java))
                 10 -> startActivity(Intent(this, NavigationCodelabMainActivity::class.java))
+                11 -> startActivity(Intent(this, WordMainActivity::class.java))
             }
         }
 

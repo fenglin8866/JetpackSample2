@@ -209,4 +209,10 @@
     <string name="finish_button">Finish Flow</string>
     <string name="send_deep_link_notification_button">Send deep link notification</string>
 
+    <!-- Navigation fragment codelab -->
+    <string name="detail_prefix">Words That Start With</string>
+    <string name="action_switch_layout">Switch Layout</string>
+    <string name="look_up_word">Look up word in a Browser Search</string>
+    <string name="look_up_words">Show Stored Words</string>
+    <string name="word_list_fragment_label">Words That Start With {letter}</string>
 </resources>

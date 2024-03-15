@@ -11,8 +11,8 @@ android {
     compileSdk rootProject.compileSdkVersion
 
     buildFeatures {
-        buildConfig = true
-        dataBinding =true
+        buildConfig true
+        dataBinding true
     }
     defaultConfig {
         minSdk rootProject.minSdkVersion

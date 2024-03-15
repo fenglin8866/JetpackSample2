@@ -106,6 +106,10 @@
                 android:resource="@xml/deep_link_appwidget_info" />
         </receiver>
 
+        <activity android:name=".navigation.codelab.wordsapp.WordMainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Words"/>
+
     </application>
 
 </manifest>
