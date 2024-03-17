@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "JetpackSample"
+rootProject.name = "JetpackSample2"
 include ':app'
 include ':sunflowerlibrary'

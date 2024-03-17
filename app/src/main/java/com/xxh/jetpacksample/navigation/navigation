@@ -46,12 +46,19 @@ Navigation 组件可处理各种导航用例，从简单的按钮点击到更复
        navController.navigate(R.id.xxx)导航到对应的目的地
 
    5、其他
-        a、添加过渡动画
-         //退出时：目标目的地执行的动画
-         app:popEnterAnim="@anim/slide_in_left"
-         //退出时：当前目的地执行的动画
-         app:popExitAnim="@anim/slide_out_right"
-         //进入时：目标目的地执行的动画
-         app:enterAnim="@anim/slide_in_right"
-         //进入时：当前目的地执行的动画
-         app:exitAnim="@anim/slide_out_left"
+       a、添加过渡动画
+               以屏幕为参考点：
+               进入下一个导航动画分析
+               目标目的地
+               右滑进入，x坐标100%到0
+                app:enterAnim="@anim/slide_in_right"
+               显示目的地
+               左滑退出，x坐标0到-100%
+               app:exitAnim="@anim/slide_out_left"
+               退出当前导航动画分析
+               目标目的地
+               左滑进入，x坐标-100%到0
+               app:popEnterAnim="@anim/slide_in_left"
+               显示目的地
+               右滑退出，x坐标0到100%
+               app:popExitAnim="@anim/slide_out_right"

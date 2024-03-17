@@ -1,0 +1,14 @@
+lifecycle源码分析
+版本：
+def lifecycle_version = "2.6.0"
+def arch_version = "2.2.0"
+
+==============================
+疑问点
+1.Lifecycle类中为什么要定义state？，而不是只用Event
+
+2.LifecycleRegistry中
+observerMap为什么要定义不变性？
+parentStates的作用？
+执行state = min(state, newState)的作用
+针对一些特殊情况，怎么保障所有观察者的同步
