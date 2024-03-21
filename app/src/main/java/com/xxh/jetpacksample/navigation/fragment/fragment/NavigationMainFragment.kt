@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.xxh.jetpacksample.R
-import com.xxh.jetpacksample.databinding.ActivityNavigationFragmentBinding
 import com.xxh.jetpacksample.databinding.FragmentMainNavigationBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -41,7 +41,8 @@ class NavigationMainFragment : Fragment() {
         // Inflate the layout for this fragment
         mBinding = FragmentMainNavigationBinding.inflate(layoutInflater, container, false)
         mBinding.profile.setOnClickListener {
-            findNavController().navigate(R.id.action_navigationMainFragment_to_profileFragment)
+            val bundle = bundleOf("pwd" to "123")
+            findNavController().navigate(R.id.action_to_profileFragment, bundle)
         }
         mBinding.scrolling.setOnClickListener {
             findNavController().navigate(R.id.action_navigationMainFragment_to_scrollingFragment)

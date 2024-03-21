@@ -20,6 +20,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.xxh.jetpacksample.databinding.FragmentWordListBinding
@@ -47,13 +48,16 @@ class WordListFragment : Fragment() {
 
     private lateinit var letterId: String
 
+    private val args:WordListFragmentArgs by navArgs()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Retrieve the LETTER from the Fragment arguments
-        arguments?.let {
+       /* arguments?.let {
             letterId = it.getString(LETTER).toString()
-        }
+        }*/
+        letterId=args.letter
     }
 
     override fun onCreateView(

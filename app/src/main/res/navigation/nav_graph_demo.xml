@@ -15,6 +15,10 @@
             app:destination="@id/friendsListFragment"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="xxh" />
     </fragment>
     <fragment
         android:id="@+id/friendsListFragment"
@@ -27,7 +31,7 @@
         android:label="fragment_main_navigation"
         tools:layout="@layout/fragment_main_navigation" >
         <action
-            android:id="@+id/action_navigationMainFragment_to_profileFragment"
+            android:id="@+id/action_to_profileFragment"
             app:destination="@id/profileFragment" />
         <action
             android:id="@+id/action_navigationMainFragment_to_scrollingFragment"

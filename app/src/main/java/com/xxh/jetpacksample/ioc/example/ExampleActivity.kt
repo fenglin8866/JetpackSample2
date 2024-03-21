@@ -2,9 +2,7 @@ package com.xxh.jetpacksample.ioc.example
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.xxh.jetpacksample.R
 import com.xxh.jetpacksample.databinding.ActivityExampleBinding
-import com.xxh.jetpacksample.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.OkHttpClient
 import javax.inject.Inject
