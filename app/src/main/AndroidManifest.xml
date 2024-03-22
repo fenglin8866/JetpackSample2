@@ -19,11 +19,6 @@
             android:name=".navigation.fragment.NavigationFragmentActivity"
             android:exported="false" />
         <activity
-            android:name=".navigation.compose.NavigationComposeActivity"
-            android:exported="false"
-            android:label="@string/title_activity_navigation_compose"
-            android:theme="@style/Theme.JetpackSample" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -70,23 +65,25 @@
 
         <activity
             android:name=".navigation.example.navigationadvancedsample.NavigationAdvancedMainActivity"
-            android:theme="@style/AdvancedActivityTheme"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/AdvancedActivityTheme">
             <!-- This is added to handle a deep link -->
             <nav-graph android:value="@navigation/list" />
         </activity>
 
         <activity
             android:name=".navigation.example.donuttracker.NavigationMADSMainActivity"
+            android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
+            android:theme="@style/AppTheme.NoActionBar">
             <nav-graph android:value="@navigation/nav_graph" />
-            <meta-data android:name="android.app.shortcuts"
+            <meta-data
+                android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
         </activity>
 
-        <activity android:name=".navigation.codelab.navigation.NavigationCodelabMainActivity"
+        <activity
+            android:name=".navigation.codelab.navigation.NavigationCodelabMainActivity"
             android:exported="true">
 
             <!-- TODO STEP 11.2 -->
@@ -95,7 +92,8 @@
 
         </activity>
 
-        <receiver android:name=".navigation.codelab.navigation.DeepLinkAppWidgetProvider"
+        <receiver
+            android:name=".navigation.codelab.navigation.DeepLinkAppWidgetProvider"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -106,9 +104,14 @@
                 android:resource="@xml/deep_link_appwidget_info" />
         </receiver>
 
-        <activity android:name=".navigation.codelab.wordsapp.WordMainActivity"
+        <activity
+            android:name=".navigation.codelab.wordsapp.WordMainActivity"
             android:exported="true"
-            android:theme="@style/Theme.Words"/>
+            android:theme="@style/Theme.Words" />
+
+        <activity
+            android:name="com.xxh.jetpacksample.navigation.NavigationMainActivity"
+            android:exported="false" />
 
     </application>
 

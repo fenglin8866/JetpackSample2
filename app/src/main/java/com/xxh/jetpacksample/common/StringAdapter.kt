@@ -1,16 +1,20 @@
-package com.xxh.jetpacksample
+package com.xxh.jetpacksample.common
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.xxh.jetpacksample.R
 
 
-class CustomAdapter(private val dataSet: Array<String>) :
-    RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+class StringAdapter(private val dataSet: Array<String>) :
+    RecyclerView.Adapter<StringAdapter.ViewHolder>() {
 
-     lateinit var callback:(Int)->Unit
+    private var callback: ((String) -> Unit)? = null
+
+    private var callback2: ((Int, String) -> Unit)? = null
+
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder)
@@ -24,8 +28,12 @@ class CustomAdapter(private val dataSet: Array<String>) :
         }
     }
 
-    fun setItemClickCallback(itemCallback: (Int)->Unit){
-        callback=itemCallback
+    fun setItemClickCallback(itemCallback: (String) -> Unit) {
+        callback = itemCallback
+    }
+
+    fun setItemClickCallback2(itemCallback2: (Int, String) -> Unit) {
+        callback2 = itemCallback2
     }
 
 
@@ -44,8 +52,9 @@ class CustomAdapter(private val dataSet: Array<String>) :
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.textView.text = dataSet[position]
-        viewHolder.textView.setOnClickListener{
-            callback(position)
+        viewHolder.textView.setOnClickListener {
+            callback?.let { it -> it(dataSet[position]) }
+            callback2?.let { it -> it(position, dataSet[position]) }
         }
 
     }

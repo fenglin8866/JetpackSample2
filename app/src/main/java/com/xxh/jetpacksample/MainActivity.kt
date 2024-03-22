@@ -5,18 +5,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.samples.apps.sunflower.GardenActivity
-import com.xxh.jetpacksample.ioc.dagger.main.DaggerMainActivity
+import com.xxh.jetpacksample.common.StringAdapter
 import com.xxh.jetpacksample.databinding.ActivityMainBinding
+import com.xxh.jetpacksample.ioc.dagger.main.DaggerMainActivity
 import com.xxh.jetpacksample.ioc.example.ExampleActivity
 import com.xxh.jetpacksample.ioc.hilt.ui.HiltMainActivity
-import com.xxh.jetpacksample.navigation.codelab.navigation.NavigationCodelabMainActivity
-import com.xxh.jetpacksample.navigation.codelab.wordsapp.WordMainActivity
-import com.xxh.jetpacksample.navigation.example.donuttracker.NavigationMADSMainActivity
-import com.xxh.jetpacksample.navigation.example.navigationadvancedsample.NavigationAdvancedMainActivity
-import com.xxh.jetpacksample.navigation.example.navigationsample.NavigationSampleMainActivity
-import com.xxh.jetpacksample.navigation.fragment.NavigationFragmentActivity
+import com.xxh.jetpacksample.navigation.NavigationMainActivity
 import com.xxh.jetpacksample.room.codelab.RoomMainActivity
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,30 +30,23 @@ class MainActivity : AppCompatActivity() {
             "Dagger",
             "Room",
             "SunFlower",
-            "NavigationFragment",
-            "NavigationSample",
-            "NavigationAdvanced",
-            "NavigationMADSkills",
-            "NavigationCodelab",
-            "NavigationWord",
+            "Navigation"
         )
-        val customAdapter = CustomAdapter(dataset)
+        val customAdapter = StringAdapter(dataset)
         customAdapter.setItemClickCallback {
+            var intent: Intent? = null
             when (it) {
-                0 -> startActivity(Intent(this, ExampleActivity::class.java))
-                1 -> startActivity(Intent(this, HiltMainActivity::class.java))
-                2 -> startActivity(Intent(this, DaggerMainActivity::class.java))
-                3 -> startActivity(Intent(this, RoomMainActivity::class.java))
-                4 -> startActivity(Intent(this, GardenActivity::class.java))
-                5 -> startActivity(Intent(this, NavigationFragmentActivity::class.java))
-                6 -> startActivity(Intent(this, NavigationSampleMainActivity::class.java))
-                7 -> startActivity(Intent(this, NavigationAdvancedMainActivity::class.java))
-                8 -> startActivity(Intent(this, NavigationMADSMainActivity::class.java))
-                9 -> startActivity(Intent(this, NavigationCodelabMainActivity::class.java))
-                10 -> startActivity(Intent(this, WordMainActivity::class.java))
+                "Example" -> Intent(this, ExampleActivity::class.java)
+                "Hilt" -> intent = Intent(this, HiltMainActivity::class.java)
+                "Dagger" -> intent = Intent(this, DaggerMainActivity::class.java)
+                "Room" -> intent = Intent(this, RoomMainActivity::class.java)
+                "SunFlower" -> intent = Intent(this, GardenActivity::class.java)
+                "Navigation" -> intent = Intent(this, NavigationMainActivity::class.java)
+            }
+            intent?.let {
+                startActivity(intent)
             }
         }
-
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         mBinding.recyclerView.layoutManager = layoutManager
