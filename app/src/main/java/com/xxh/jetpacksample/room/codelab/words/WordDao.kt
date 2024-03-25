@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xxh.jetpacksample.room.codelab
+package com.xxh.jetpacksample.room.codelab.words
 
 import androidx.room.Dao
 import androidx.room.Insert

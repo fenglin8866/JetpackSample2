@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xxh.jetpacksample.room.codelab
+package com.xxh.jetpacksample.room.codelab.words
 
 import android.app.Activity
 import android.content.Intent
@@ -29,7 +29,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.xxh.jetpacksample.JApplication
 import com.xxh.jetpacksample.R
 
-class RoomMainActivity : AppCompatActivity() {
+class WordsActivity : AppCompatActivity() {
 
     private val newWordActivityRequestCode = 1
     private val wordViewModel: WordViewModel by viewModels {
@@ -47,7 +47,7 @@ class RoomMainActivity : AppCompatActivity() {
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
-            val intent = Intent(this@RoomMainActivity, NewWordActivity::class.java)
+            val intent = Intent(this@WordsActivity, NewWordActivity::class.java)
             startActivityForResult(intent, newWordActivityRequestCode)
         }
 

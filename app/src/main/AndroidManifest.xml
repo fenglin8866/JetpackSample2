@@ -53,8 +53,11 @@
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:name=".room.codelab.NewWordActivity" />
-        <activity android:name=".room.codelab.RoomMainActivity" />
+        <activity android:name=".room.RoomMainActivity" />
+        <activity android:name=".room.codelab.words.NewWordActivity" />
+        <activity android:name=".room.codelab.words.WordsActivity" />
+        <activity android:name=".room.codelab.busschedule.BusScheduleActivity" android:theme="@style/Theme.BusSchedule" />
+
 
         <activity
             android:name=".navigation.example.navigationsample.NavigationSampleMainActivity"

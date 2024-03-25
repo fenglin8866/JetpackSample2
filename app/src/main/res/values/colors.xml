@@ -14,4 +14,7 @@
     <color name="blue_700">#1675D1</color>
     <color name="blue_900">#004A9F</color>
 
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+
 </resources>

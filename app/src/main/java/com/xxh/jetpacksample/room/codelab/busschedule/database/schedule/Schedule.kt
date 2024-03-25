@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 Google Inc.
+ * Copyright (C) 2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,23 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.xxh.jetpacksample.room.codelab.busschedule.database.schedule
 
-package com.xxh.jetpacksample.room.codelab
-
+import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 /**
- * A basic class representing an entity that is a row in a one-column database table.
- *
- * @ Entity - You must annotate the class as an entity and supply a table name if not class name.
- * @ PrimaryKey - You must identify the primary key.
- * @ ColumnInfo - You must supply the column name if it is different from the variable name.
- *
- * See the documentation for the full rich set of annotations.
- * https://developer.android.com/topic/libraries/architecture/room.html
+ * Represents a single table in the database. Each row is a separate instance of the Schedule class.
+ * Each property corresponds to a column. Additionally, an ID is needed as a unique identifier for
+ * each row in the database.
  */
-
-@Entity(tableName = "word_table")
-data class Word(@PrimaryKey @ColumnInfo(name = "word") val word: String)
+@Entity
+data class Schedule(
+    @PrimaryKey val id: Int,
+    @NonNull @ColumnInfo(name = "stop_name") val stopName: String,
+    @NonNull @ColumnInfo(name = "arrival_time") val arrivalTime: Int
+)

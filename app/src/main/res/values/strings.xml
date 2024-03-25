@@ -223,4 +223,9 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+    <!-- Shown above left column listing bus stops in full schedule fragment -->
+    <string name="bus_stop_header">Stop Name</string>
+    <!-- Shown above right column listing arrival times in full schedule fragment -->
+    <string name="arrival_time_header">Arrival Time</string>
 </resources>

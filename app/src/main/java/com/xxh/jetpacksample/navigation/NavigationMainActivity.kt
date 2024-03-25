@@ -32,7 +32,7 @@ class NavigationMainActivity : AppCompatActivity() {
         customAdapter.setItemClickCallback {
             var intent: Intent? = null
             when (it) {
-                "NavigationFragment" -> Intent(this, NavigationFragmentActivity::class.java)
+                "NavigationFragment" -> intent =Intent(this, NavigationFragmentActivity::class.java)
                 "NavigationSample" -> intent = Intent(this, NavigationSampleMainActivity::class.java)
                 "NavigationAdvanced" -> intent = Intent(this, NavigationAdvancedMainActivity::class.java)
                 "NavigationMADSkills" -> intent = Intent(this, NavigationMADSMainActivity::class.java)

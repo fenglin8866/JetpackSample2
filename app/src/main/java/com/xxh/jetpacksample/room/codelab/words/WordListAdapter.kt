@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xxh.jetpacksample.room.codelab
+package com.xxh.jetpacksample.room.codelab.words
 
 import android.view.LayoutInflater
 import android.view.View
@@ -24,7 +24,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.xxh.jetpacksample.R
-import com.xxh.jetpacksample.room.codelab.WordListAdapter.WordViewHolder
+import com.xxh.jetpacksample.room.codelab.words.WordListAdapter.WordViewHolder
 
 class WordListAdapter : ListAdapter<Word, WordViewHolder>(WORDS_COMPARATOR) {
 
