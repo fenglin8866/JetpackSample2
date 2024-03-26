@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.xxh.jetpacksample.common.ListBaseActivity
 import com.xxh.jetpacksample.common.StringAdapter
 import com.xxh.jetpacksample.databinding.ActivityMainBinding
 import com.xxh.jetpacksample.navigation.codelab.navigation.NavigationCodelabMainActivity
@@ -13,40 +14,24 @@ import com.xxh.jetpacksample.navigation.example.navigationadvancedsample.Navigat
 import com.xxh.jetpacksample.navigation.example.navigationsample.NavigationSampleMainActivity
 import com.xxh.jetpacksample.navigation.fragment.NavigationFragmentActivity
 
-class NavigationMainActivity : AppCompatActivity() {
+class NavigationMainActivity : ListBaseActivity() {
 
-    private lateinit var mBinding: ActivityMainBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        mBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(mBinding.root)
-        val dataset = arrayOf(
-            "NavigationFragment",
-            "NavigationSample",
-            "NavigationAdvanced",
-            "NavigationMADSkills",
-            "NavigationCodelab",
-            "NavigationWord",
-        )
-        val customAdapter = StringAdapter(dataset)
-        customAdapter.setItemClickCallback {
-            var intent: Intent? = null
-            when (it) {
-                "NavigationFragment" -> intent =Intent(this, NavigationFragmentActivity::class.java)
-                "NavigationSample" -> intent = Intent(this, NavigationSampleMainActivity::class.java)
-                "NavigationAdvanced" -> intent = Intent(this, NavigationAdvancedMainActivity::class.java)
-                "NavigationMADSkills" -> intent = Intent(this, NavigationMADSMainActivity::class.java)
-                "NavigationCodelab" -> intent = Intent(this, NavigationCodelabMainActivity::class.java)
-                "NavigationWord" -> intent = Intent(this, WordMainActivity::class.java)
-            }
-            intent?.let {
-                startActivity(intent)
-            }
-        }
+    override fun setData(): Array<String> = arrayOf(
+        "NavigationFragment",
+        "NavigationSample",
+        "NavigationAdvanced",
+        "NavigationMADSkills",
+        "NavigationCodelab",
+        "NavigationWord",
+    )
 
-        val layoutManager = LinearLayoutManager(this)
-        layoutManager.orientation = LinearLayoutManager.VERTICAL
-        mBinding.recyclerView.layoutManager = layoutManager
-        mBinding.recyclerView.adapter = customAdapter
+    override fun setClickIntent(name: String): Intent? = when (name) {
+        "NavigationFragment" -> Intent(this, NavigationFragmentActivity::class.java)
+        "NavigationSample" -> Intent(this, NavigationSampleMainActivity::class.java)
+        "NavigationAdvanced" -> Intent(this, NavigationAdvancedMainActivity::class.java)
+        "NavigationMADSkills" -> Intent(this, NavigationMADSMainActivity::class.java)
+        "NavigationCodelab" -> Intent(this, NavigationCodelabMainActivity::class.java)
+        "NavigationWord" -> Intent(this, WordMainActivity::class.java)
+        else -> null
     }
 }
