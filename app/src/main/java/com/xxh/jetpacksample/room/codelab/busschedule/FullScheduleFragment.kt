@@ -19,23 +19,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.coroutineScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.xxh.jetpacksample.JApplication
+import com.xxh.jetpacksample.common.BaseFragment
 import com.xxh.jetpacksample.room.codelab.busschedule.viewmodels.BusScheduleViewModel
 import com.xxh.jetpacksample.room.codelab.busschedule.viewmodels.BusScheduleViewModelFactory
 import com.xxh.jetpacksample.databinding.FullScheduleFragmentBinding
 import kotlinx.coroutines.launch
 
-class FullScheduleFragment: Fragment() {
-
-    private var _binding: FullScheduleFragmentBinding? = null
-
-    private val binding get() = _binding!!
+class FullScheduleFragment: BaseFragment<FullScheduleFragmentBinding>(){
 
     private lateinit var recyclerView: RecyclerView
 
@@ -45,27 +41,24 @@ class FullScheduleFragment: Fragment() {
         )
     }
 
-    override fun onCreateView(
+    override fun bindView(
         inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FullScheduleFragmentBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        container: ViewGroup?
+    ): FullScheduleFragmentBinding {
+        return FullScheduleFragmentBinding.inflate(inflater,container,false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recyclerView = binding.recyclerView
+        recyclerView = mBinding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        val busStopAdapter = BusStopAdapter({
+        val busStopAdapter = BusStopAdapter {
             val action = FullScheduleFragmentDirections
                 .actionFullScheduleFragmentToStopScheduleFragment(
-                stopName = it.stopName
-            )
+                    stopName = it.stopName
+                )
             view.findNavController().navigate(action)
-        })
+        }
         recyclerView.adapter = busStopAdapter
         lifecycle.coroutineScope.launch {
             viewModel.fullSchedule().collect() {
@@ -74,8 +67,4 @@ class FullScheduleFragment: Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }

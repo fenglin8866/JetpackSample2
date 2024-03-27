@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.xxh.jetpacksample.room.codelab.database.inventory
+package com.xxh.jetpacksample.room.codelab.data.database.inventory
 
 import androidx.room.Dao
 import androidx.room.Delete

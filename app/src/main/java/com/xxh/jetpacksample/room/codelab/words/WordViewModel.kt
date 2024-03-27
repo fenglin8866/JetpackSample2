@@ -21,7 +21,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.xxh.jetpacksample.room.codelab.database.word.Word
+import com.xxh.jetpacksample.room.codelab.data.WordRepository
+import com.xxh.jetpacksample.room.codelab.data.database.word.Word
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 

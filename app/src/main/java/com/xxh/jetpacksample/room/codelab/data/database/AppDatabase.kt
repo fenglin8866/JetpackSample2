@@ -13,19 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.xxh.jetpacksample.room.codelab.database
+package com.xxh.jetpacksample.room.codelab.data.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.xxh.jetpacksample.room.codelab.database.inventory.Item
-import com.xxh.jetpacksample.room.codelab.database.inventory.ItemDao
-import com.xxh.jetpacksample.room.codelab.database.schedule.Schedule
-import com.xxh.jetpacksample.room.codelab.database.schedule.ScheduleDao
-import com.xxh.jetpacksample.room.codelab.database.word.Word
-import com.xxh.jetpacksample.room.codelab.database.word.WordDao
+import com.xxh.jetpacksample.room.codelab.data.database.inventory.Item
+import com.xxh.jetpacksample.room.codelab.data.database.inventory.ItemDao
+import com.xxh.jetpacksample.room.codelab.data.database.schedule.Schedule
+import com.xxh.jetpacksample.room.codelab.data.database.schedule.ScheduleDao
+import com.xxh.jetpacksample.room.codelab.data.database.word.Word
+import com.xxh.jetpacksample.room.codelab.data.database.word.WordDao
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

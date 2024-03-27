@@ -21,20 +21,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.xxh.jetpacksample.JApplication
+import com.xxh.jetpacksample.common.BaseFragment
 import com.xxh.jetpacksample.databinding.FragmentAddItemBinding
-import com.xxh.jetpacksample.room.codelab.database.inventory.Item
+import com.xxh.jetpacksample.room.codelab.data.database.inventory.Item
 import kotlinx.coroutines.launch
 
 /**
  * Fragment to add or update an item in the Inventory database.
  */
-class AddItemFragment : Fragment() {
+class AddItemFragment : BaseFragment<FragmentAddItemBinding>() {
 
     private val navigationArgs: ItemDetailFragmentArgs by navArgs()
     lateinit var mItem: Item
@@ -48,25 +48,13 @@ class AddItemFragment : Fragment() {
         )
     }
 
-    // Binding object instance corresponding to the fragment_add_item.xml layout
-    // This property is non-null between the onCreateView() and onDestroyView() lifecycle callbacks,
-    // when the view hierarchy is attached to the fragment
-    private var _binding: FragmentAddItemBinding? = null
-    private val binding get() = _binding!!
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mItemId = navigationArgs.itemId
     }
 
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentAddItemBinding.inflate(inflater, container, false)
-        return binding.root
+    override fun bindView(inflater: LayoutInflater, container: ViewGroup?): FragmentAddItemBinding {
+        return  FragmentAddItemBinding.inflate(inflater, container, false)
     }
 
 
@@ -75,9 +63,9 @@ class AddItemFragment : Fragment() {
      */
     private fun isEntryValid(): Boolean {
         return viewModel.isEntryValid(
-            binding.itemName.text.toString(),
-            binding.itemPrice.text.toString(),
-            binding.itemCount.text.toString(),
+            mBinding.itemName.text.toString(),
+            mBinding.itemPrice.text.toString(),
+            mBinding.itemCount.text.toString(),
         )
     }
 
@@ -87,9 +75,9 @@ class AddItemFragment : Fragment() {
     private fun addNewItem() {
         if (isEntryValid()) {
             viewModel.addNewItem(
-                binding.itemName.text.toString(),
-                binding.itemPrice.text.toString(),
-                binding.itemCount.text.toString(),
+                mBinding.itemName.text.toString(),
+                mBinding.itemPrice.text.toString(),
+                mBinding.itemCount.text.toString(),
             )
             val action = AddItemFragmentDirections.actionAddItemFragmentToItemListFragment()
             findNavController().navigate(action)
@@ -99,9 +87,9 @@ class AddItemFragment : Fragment() {
     private fun updateItem() {
         if (isEntryValid()) {
             val updateItem = mItem.copy(
-                itemName = binding.itemName.text.toString(),
-                itemPrice = binding.itemPrice.text.toString().toDouble(),
-                quantityInStock = binding.itemCount.text.toString().toInt()
+                itemName = mBinding.itemName.text.toString(),
+                itemPrice = mBinding.itemPrice.text.toString().toDouble(),
+                quantityInStock = mBinding.itemCount.text.toString().toInt()
             )
             viewModel.updateItem(updateItem)
             val action = AddItemFragmentDirections.actionAddItemFragmentToItemListFragment()
@@ -118,7 +106,7 @@ class AddItemFragment : Fragment() {
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.saveAction.setOnClickListener {
+        mBinding.saveAction.setOnClickListener {
             if (isAdd()) {
                 addNewItem()
             } else {
@@ -129,9 +117,9 @@ class AddItemFragment : Fragment() {
             lifecycleScope.launch {
                 viewModel.getItemById(mItemId).collect {
                     mItem = it
-                    binding.itemName.text?.append(it.itemName)
-                    binding.itemPrice.text?.append(it.itemPrice.toString())
-                    binding.itemCount.text?.append(it.quantityInStock.toString())
+                    mBinding.itemName.text?.append(it.itemName)
+                    mBinding.itemPrice.text?.append(it.itemPrice.toString())
+                    mBinding.itemCount.text?.append(it.quantityInStock.toString())
                 }
             }
         }
@@ -150,6 +138,5 @@ class AddItemFragment : Fragment() {
         val inputMethodManager = requireActivity().getSystemService(INPUT_METHOD_SERVICE) as
                 InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(requireActivity().currentFocus?.windowToken, 0)
-        _binding = null
     }
 }

@@ -24,7 +24,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.xxh.jetpacksample.R
-import com.xxh.jetpacksample.room.codelab.database.word.Word
+import com.xxh.jetpacksample.room.codelab.data.database.word.Word
 import com.xxh.jetpacksample.room.codelab.words.WordListAdapter.WordViewHolder
 
 class WordListAdapter : ListAdapter<Word, WordViewHolder>(WORDS_COMPARATOR) {

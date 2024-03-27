@@ -1,10 +1,10 @@
 package com.xxh.jetpacksample
 
 import android.app.Application
-import com.xxh.jetpacksample.room.codelab.words.WordRepository
+import com.xxh.jetpacksample.room.codelab.data.WordRepository
 import com.xxh.jetpacksample.ioc.dagger.storage.SharedPreferencesStorage
 import com.xxh.jetpacksample.ioc.dagger.user.UserManager
-import com.xxh.jetpacksample.room.codelab.database.AppDatabase
+import com.xxh.jetpacksample.room.codelab.data.database.AppDatabase
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob

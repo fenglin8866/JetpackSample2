@@ -6,24 +6,27 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.xxh.jetpacksample.databinding.ItemListItemBinding
-import com.xxh.jetpacksample.room.codelab.database.inventory.Item
+import com.xxh.jetpacksample.room.codelab.data.database.inventory.Item
 
-class ItemListAdapter(private val itemClick:(Item)->Unit) : ListAdapter<Item, ItemListAdapter.ItemListViewHolder>(DiffCallback) {
-    object DiffCallback : DiffUtil.ItemCallback<Item>() {
-        override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
-            return oldItem.id == newItem.id
+class ItemListAdapter(private val itemClick: (Item) -> Unit) :
+    ListAdapter<Item, ItemListAdapter.ItemListViewHolder>(DiffCallback) {
+    companion object {
+        object DiffCallback : DiffUtil.ItemCallback<Item>() {
+            override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
+                return oldItem == newItem
+            }
+
         }
-
-        override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
-            return oldItem == newItem
-        }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemListViewHolder {
         val mBinding =
             ItemListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        val viewHolder=ItemListViewHolder(mBinding)
+        val viewHolder = ItemListViewHolder(mBinding)
         viewHolder.itemView.setOnClickListener {
             itemClick(getItem(viewHolder.bindingAdapterPosition))
         }
@@ -31,7 +34,7 @@ class ItemListAdapter(private val itemClick:(Item)->Unit) : ListAdapter<Item, It
     }
 
     override fun onBindViewHolder(holder: ItemListViewHolder, position: Int) {
-            holder.bind(getItem(position))
+        holder.bind(getItem(position))
     }
 
     class ItemListViewHolder(private val binding: ItemListItemBinding) :

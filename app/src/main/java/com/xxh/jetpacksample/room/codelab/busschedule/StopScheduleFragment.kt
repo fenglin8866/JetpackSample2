@@ -19,26 +19,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.coroutineScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.xxh.jetpacksample.JApplication
+import com.xxh.jetpacksample.common.BaseFragment
 import com.xxh.jetpacksample.room.codelab.busschedule.viewmodels.BusScheduleViewModel
 import com.xxh.jetpacksample.room.codelab.busschedule.viewmodels.BusScheduleViewModelFactory
 import com.xxh.jetpacksample.databinding.StopScheduleFragmentBinding
 import kotlinx.coroutines.launch
 
-class StopScheduleFragment: Fragment() {
+class StopScheduleFragment : BaseFragment<StopScheduleFragmentBinding>() {
 
     companion object {
         var STOP_NAME = "stopName"
     }
-
-    private var _binding: StopScheduleFragmentBinding? = null
-
-    private val binding get() = _binding!!
 
     private lateinit var recyclerView: RecyclerView
 
@@ -58,33 +54,25 @@ class StopScheduleFragment: Fragment() {
         }
     }
 
-    override fun onCreateView(
+    override fun bindView(
         inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = StopScheduleFragmentBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        container: ViewGroup?
+    ): StopScheduleFragmentBinding {
+        return StopScheduleFragmentBinding.inflate(inflater, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recyclerView = binding.recyclerView
+        recyclerView = mBinding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        val busStopAdapter = BusStopAdapter({})
+        val busStopAdapter = BusStopAdapter {}
         // by passing in the stop name, filtered results are returned,
         // and tapping rows won't trigger navigation
         recyclerView.adapter = busStopAdapter
         lifecycle.coroutineScope.launch {
-            viewModel.scheduleForStopName(stopName).collect() {
+            viewModel.scheduleForStopName(stopName).collect {
                 busStopAdapter.submitList(it)
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

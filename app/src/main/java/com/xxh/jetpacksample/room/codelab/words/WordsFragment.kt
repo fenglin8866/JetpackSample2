@@ -11,35 +11,28 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.xxh.jetpacksample.JApplication
 import com.xxh.jetpacksample.R
+import com.xxh.jetpacksample.common.BaseFragment
+import com.xxh.jetpacksample.databinding.FragmentNewWordBinding
 import com.xxh.jetpacksample.databinding.FragmentWordsBinding
 import kotlinx.coroutines.launch
 
-class WordsFragment : Fragment() {
-
-
-    private var _binding: FragmentWordsBinding? = null
-    private val binding get() = _binding!!
+class WordsFragment : BaseFragment<FragmentWordsBinding>() {
 
     private val wordViewModel: WordViewModel by activityViewModels{
         WordViewModelFactory((activity?.application as JApplication).repository)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
-        _binding=FragmentWordsBinding.inflate(inflater,container,false)
-        return binding.root
+    override fun bindView(inflater: LayoutInflater, container: ViewGroup?): FragmentWordsBinding {
+        return FragmentWordsBinding.inflate(inflater, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = WordListAdapter()
-        binding.recyclerview.adapter= adapter
-        binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
+        mBinding.recyclerview.adapter= adapter
+        mBinding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
 
-        binding.fab.setOnClickListener {
+        mBinding.fab.setOnClickListener {
             findNavController().navigate(R.id.action_wordsFragment_to_newWordFragment)
         }
 
@@ -61,10 +54,4 @@ class WordsFragment : Fragment() {
         }*/
 
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
 }

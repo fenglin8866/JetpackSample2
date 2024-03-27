@@ -20,7 +20,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -28,15 +27,15 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.xxh.jetpacksample.JApplication
 import com.xxh.jetpacksample.R
+import com.xxh.jetpacksample.common.BaseFragment
 import com.xxh.jetpacksample.databinding.FragmentItemDetailBinding
-import com.xxh.jetpacksample.room.codelab.database.inventory.Item
+import com.xxh.jetpacksample.room.codelab.data.database.inventory.Item
 import kotlinx.coroutines.launch
-import kotlin.properties.Delegates
 
 /**
  * [ItemDetailFragment] displays the details of the selected item.
  */
-class ItemDetailFragment : Fragment() {
+class ItemDetailFragment : BaseFragment<FragmentItemDetailBinding>() {
 
     private val viewModel: InventoryViewModel by activityViewModels {
         InventoryViewModelFactory(
@@ -45,11 +44,7 @@ class ItemDetailFragment : Fragment() {
     }
 
     private var mItemId: Int = 0
-
     private val navigationArgs: ItemDetailFragmentArgs by navArgs()
-
-    private var _binding: FragmentItemDetailBinding? = null
-    private val binding get() = _binding!!
     private lateinit var mItem: Item
 
 
@@ -58,21 +53,19 @@ class ItemDetailFragment : Fragment() {
         mItemId = navigationArgs.itemId
     }
 
-    override fun onCreateView(
+    override fun bindView(
         inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentItemDetailBinding.inflate(inflater, container, false)
-        return binding.root
+        container: ViewGroup?
+    ): FragmentItemDetailBinding {
+        return FragmentItemDetailBinding.inflate(inflater, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.deleteItem.setOnClickListener {
+        mBinding.deleteItem.setOnClickListener {
             showConfirmationDialog()
         }
-        binding.editItem.setOnClickListener {
+        mBinding.editItem.setOnClickListener {
             val directions = ItemDetailFragmentDirections.actionItemDetailFragmentToAddItemFragment(
                 "Edit",
                 mItemId
@@ -83,9 +76,9 @@ class ItemDetailFragment : Fragment() {
             viewModel.getItemById(mItemId).collect {
                 mItem = it
                 //todo 是否可以在suspend类中更新界面
-                binding.itemName.text = it.itemName
-                binding.itemPrice.text = it.itemPrice.toString()
-                binding.itemCount.text = it.quantityInStock.toString()
+                mBinding.itemName.text = it.itemName
+                mBinding.itemPrice.text = it.itemPrice.toString()
+                mBinding.itemCount.text = it.quantityInStock.toString()
             }
         }
     }
@@ -113,11 +106,4 @@ class ItemDetailFragment : Fragment() {
         findNavController().navigateUp()
     }
 
-    /**
-     * Called when fragment is destroyed.
-     */
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }

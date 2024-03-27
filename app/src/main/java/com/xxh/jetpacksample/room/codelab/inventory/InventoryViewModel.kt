@@ -18,10 +18,9 @@ package com.xxh.jetpacksample.room.codelab.inventory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.xxh.jetpacksample.room.codelab.database.inventory.Item
-import com.xxh.jetpacksample.room.codelab.database.inventory.ItemDao
+import com.xxh.jetpacksample.room.codelab.data.database.inventory.Item
+import com.xxh.jetpacksample.room.codelab.data.database.inventory.ItemDao
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 

@@ -13,11 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.xxh.jetpacksample.room.codelab.words
+package com.xxh.jetpacksample.room.codelab.data
 
+import android.os.Build
 import androidx.annotation.WorkerThread
-import com.xxh.jetpacksample.room.codelab.database.word.Word
-import com.xxh.jetpacksample.room.codelab.database.word.WordDao
+import com.xxh.jetpacksample.room.codelab.data.database.word.Word
+import com.xxh.jetpacksample.room.codelab.data.database.word.WordDao
 import kotlinx.coroutines.flow.Flow
 
 /**

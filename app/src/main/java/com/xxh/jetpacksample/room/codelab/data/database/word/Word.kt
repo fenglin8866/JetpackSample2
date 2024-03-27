@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xxh.jetpacksample.room.codelab.database.word
+package com.xxh.jetpacksample.room.codelab.data.database.word
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

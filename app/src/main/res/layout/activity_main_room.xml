@@ -25,7 +25,7 @@ So, we are leaving the template code in. -->
     android:layout_height="match_parent">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView2"
+        android:id="@+id/nav_host_fragment_room"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -38,6 +38,6 @@ So, we are leaving the template code in. -->
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/nav_graph_room_word" />
+        app:navGraph="@navigation/nav_graph_room" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 

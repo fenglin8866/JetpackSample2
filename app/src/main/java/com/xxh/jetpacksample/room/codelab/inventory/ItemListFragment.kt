@@ -20,22 +20,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.xxh.jetpacksample.JApplication
 import com.xxh.jetpacksample.R
+import com.xxh.jetpacksample.common.BaseFragment
 import com.xxh.jetpacksample.databinding.ItemListFragmentBinding
 import kotlinx.coroutines.launch
 
 /**
  * Main fragment displaying details for all items in the database.
  */
-class ItemListFragment : Fragment() {
-    private var _binding: ItemListFragmentBinding? = null
-    private val binding get() = _binding!!
+class ItemListFragment : BaseFragment<ItemListFragmentBinding>() {
 
     private val viewModel: InventoryViewModel by activityViewModels {
         InventoryViewModelFactory(
@@ -43,24 +41,22 @@ class ItemListFragment : Fragment() {
         )
     }
 
-    override fun onCreateView(
+    override fun bindView(
         inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = ItemListFragmentBinding.inflate(inflater, container, false)
-        return binding.root
+        container: ViewGroup?
+    ): ItemListFragmentBinding {
+        return ItemListFragmentBinding.inflate(inflater, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
+        mBinding.recyclerView.layoutManager = LinearLayoutManager(this.context)
         val itemListAdapter = ItemListAdapter{
             val directions=ItemListFragmentDirections.actionItemListFragmentToItemDetailFragment(it.id)
             this.findNavController().navigate(directions)
         }
-        binding.recyclerView.adapter = itemListAdapter
-        binding.floatingActionButton.setOnClickListener {
+        mBinding.recyclerView.adapter = itemListAdapter
+        mBinding.floatingActionButton.setOnClickListener {
             val action = ItemListFragmentDirections.actionItemListFragmentToAddItemFragment(
                 getString(R.string.add_fragment_title)
             )
