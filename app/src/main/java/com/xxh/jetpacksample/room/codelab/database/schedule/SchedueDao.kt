@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.xxh.jetpacksample.room.codelab.busschedule.database.schedule
+package com.xxh.jetpacksample.room.codelab.database.schedule
 
 import androidx.room.Dao
 import androidx.room.Query

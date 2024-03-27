@@ -21,7 +21,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.xxh.jetpacksample.room.codelab.busschedule.database.schedule.Schedule
+import com.xxh.jetpacksample.room.codelab.database.schedule.Schedule
 import com.xxh.jetpacksample.databinding.BusStopItemBinding
 import java.text.SimpleDateFormat
 import java.util.Date

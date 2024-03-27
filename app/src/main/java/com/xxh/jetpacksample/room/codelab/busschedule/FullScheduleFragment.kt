@@ -41,7 +41,7 @@ class FullScheduleFragment: Fragment() {
 
     private val viewModel: BusScheduleViewModel by activityViewModels {
         BusScheduleViewModelFactory(
-            (activity?.application as JApplication).databaseBusSchedule.scheduleDao()
+            (activity?.application as JApplication).databaseApp.scheduleDao()
         )
     }
 

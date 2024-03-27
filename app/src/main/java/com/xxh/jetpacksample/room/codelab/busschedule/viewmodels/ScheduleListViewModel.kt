@@ -17,8 +17,8 @@ package com.xxh.jetpacksample.room.codelab.busschedule.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.xxh.jetpacksample.room.codelab.busschedule.database.schedule.Schedule
-import com.xxh.jetpacksample.room.codelab.busschedule.database.schedule.ScheduleDao
+import com.xxh.jetpacksample.room.codelab.database.schedule.Schedule
+import com.xxh.jetpacksample.room.codelab.database.schedule.ScheduleDao
 import kotlinx.coroutines.flow.Flow
 
 class BusScheduleViewModel(private val scheduleDao: ScheduleDao): ViewModel() {

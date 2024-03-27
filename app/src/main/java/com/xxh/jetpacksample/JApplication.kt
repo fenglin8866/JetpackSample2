@@ -5,7 +5,7 @@ import com.xxh.jetpacksample.room.codelab.words.WordRepository
 import com.xxh.jetpacksample.room.codelab.words.WordRoomDatabase
 import com.xxh.jetpacksample.ioc.dagger.storage.SharedPreferencesStorage
 import com.xxh.jetpacksample.ioc.dagger.user.UserManager
-import com.xxh.jetpacksample.room.codelab.busschedule.database.AppDatabase
+import com.xxh.jetpacksample.room.codelab.database.AppDatabase
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -31,7 +31,7 @@ class JApplication : Application() {
         WordRoomDatabase.getDatabase(this, applicationScope)
     }
 
-    val databaseBusSchedule: AppDatabase by lazy { AppDatabase.getDatabase(this) }
+    val databaseApp by lazy { AppDatabase.getDatabase(this) }
 
     val repository by lazy {
         WordRepository(database.wordDao())

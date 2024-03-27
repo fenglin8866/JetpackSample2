@@ -57,6 +57,7 @@
         <activity android:name=".room.codelab.words.NewWordActivity" />
         <activity android:name=".room.codelab.words.WordsActivity" />
         <activity android:name=".room.codelab.busschedule.BusScheduleActivity" android:theme="@style/Theme.BusSchedule" />
+        <activity android:name=".room.codelab.inventory.InventoryActivity"  android:theme="@style/Theme.InventoryApp" />
 
 
         <activity

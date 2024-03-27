@@ -19,17 +19,20 @@ import com.xxh.jetpacksample.navigation.example.navigationadvancedsample.Navigat
 import com.xxh.jetpacksample.navigation.example.navigationsample.NavigationSampleMainActivity
 import com.xxh.jetpacksample.navigation.fragment.NavigationFragmentActivity
 import com.xxh.jetpacksample.room.codelab.busschedule.BusScheduleActivity
+import com.xxh.jetpacksample.room.codelab.inventory.InventoryActivity
 import com.xxh.jetpacksample.room.codelab.words.WordsActivity
 
 class RoomMainActivity : ListBaseActivity() {
 
     override fun setData(): Array<String> = arrayOf(
         "BusSchedule",
+        "Inventory",
         "Words",
     )
 
     override fun setClickIntent(name: String): Intent? = when (name) {
         "BusSchedule" -> Intent(this, BusScheduleActivity::class.java)
+        "Inventory" -> Intent(this, InventoryActivity::class.java)
         "Words" -> Intent(this, WordsActivity::class.java)
         else -> null
     }
