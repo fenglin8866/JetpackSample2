@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_room_word"
+    app:startDestination="@id/wordsFragment">
+
+    <fragment
+        android:id="@+id/wordsFragment"
+        android:name="com.xxh.jetpacksample.room.codelab.words.WordsFragment"
+        android:label="fragment_words"
+        tools:layout="@layout/fragment_words" >
+        <action
+            android:id="@+id/action_wordsFragment_to_newWordFragment"
+            app:destination="@id/newWordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newWordFragment"
+        android:name="com.xxh.jetpacksample.room.codelab.words.NewWordFragment"
+        android:label="fragment_new_word"
+        tools:layout="@layout/fragment_new_word" />
+</navigation>

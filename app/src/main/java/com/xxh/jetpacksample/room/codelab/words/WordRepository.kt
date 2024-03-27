@@ -16,6 +16,8 @@
 package com.xxh.jetpacksample.room.codelab.words
 
 import androidx.annotation.WorkerThread
+import com.xxh.jetpacksample.room.codelab.database.word.Word
+import com.xxh.jetpacksample.room.codelab.database.word.WordDao
 import kotlinx.coroutines.flow.Flow
 
 /**

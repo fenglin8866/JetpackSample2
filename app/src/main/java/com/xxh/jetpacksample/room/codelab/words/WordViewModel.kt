@@ -21,6 +21,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.xxh.jetpacksample.room.codelab.database.word.Word
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 /**
@@ -35,6 +37,7 @@ class WordViewModel(private val repository: WordRepository) : ViewModel() {
     //   the UI when the data actually changes.
     // - Repository is completely separated from the UI through the ViewModel.
     val allWords: LiveData<List<Word>> = repository.allWords.asLiveData()
+    val allWords2: Flow<List<Word>> = repository.allWords
 
     /**
      * Launching a new coroutine to insert the data in a non-blocking way
