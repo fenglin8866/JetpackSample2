@@ -31,6 +31,8 @@
         <activity android:name=".room.RoomMainActivity" android:theme="@style/Theme.InventoryApp" />
 
         <!-- IOC相关 -->
+        <activity android:name=".ioc.IocMainActivity" />
+
         <activity
             android:name=".ioc.example.ExampleActivity"
             android:exported="false" />
