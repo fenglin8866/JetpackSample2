@@ -23,19 +23,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import com.xxh.jetpacksample.JApplication
 import com.xxh.jetpacksample.R
 import com.xxh.jetpacksample.hilt.data.LoggerLocalDataSource
 import com.xxh.jetpacksample.hilt.navigator.AppNavigator
 import com.xxh.jetpacksample.hilt.navigator.Screens
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 /**
  * Fragment that displays buttons whose interactions are recorded.
  */
+@AndroidEntryPoint
 class ButtonsFragment : Fragment() {
+    @Inject
+    lateinit var logger: LoggerLocalDataSource
 
-    private lateinit var logger: LoggerLocalDataSource
-    private lateinit var navigator: AppNavigator
+    @Inject
+    lateinit var navigator: AppNavigator
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,15 +52,13 @@ class ButtonsFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        populateFields(context)
+       // populateFields(context)
     }
 
     private fun populateFields(context: Context) {
-        logger = (context.applicationContext as JApplication).
-            serviceLocator.loggerLocalDataSource
+       // logger = (context.applicationContext as JApplication).serviceLocator.loggerLocalDataSource
 
-        navigator = (context.applicationContext as JApplication).
-            serviceLocator.provideNavigator(requireActivity())
+       // navigator = (context.applicationContext as JApplication).serviceLocator.provideNavigator(requireActivity())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
