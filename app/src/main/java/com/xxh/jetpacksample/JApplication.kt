@@ -2,8 +2,8 @@ package com.xxh.jetpacksample
 
 import android.app.Application
 import com.xxh.jetpacksample.room.codelab.data.WordRepository
-import com.xxh.jetpacksample.ioc.dagger.storage.SharedPreferencesStorage
-import com.xxh.jetpacksample.ioc.dagger.user.UserManager
+import com.xxh.jetpacksample.ioc.hilt.codelab.login.storage.SharedPreferencesStorage
+import com.xxh.jetpacksample.ioc.hilt.codelab.login.user.UserManager
 import com.xxh.jetpacksample.room.codelab.data.database.AppDatabase
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
