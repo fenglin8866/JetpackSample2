@@ -20,34 +20,37 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.fragment.app.Fragment
-import com.xxh.jetpacksample.ioc.hilt.codelab.login.registration.RegistrationActivity
-import com.xxh.jetpacksample.ioc.hilt.codelab.login.registration.RegistrationViewModel
+import androidx.navigation.fragment.findNavController
 import com.xxh.jetpacksample.R
+import com.xxh.jetpacksample.ioc.hilt.codelab.login.registration.RegistrationViewModel
+import com.xxh.jetpacksample.common.BaseFragment
+import com.xxh.jetpacksample.databinding.FragmentTermsAndConditionsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class TermsAndConditionsFragment : Fragment() {
+class TermsAndConditionsFragment : BaseFragment<FragmentTermsAndConditionsBinding>() {
 
     @Inject
     lateinit var registrationViewModel: RegistrationViewModel
 
-    override fun onCreateView(
+    override fun bindView(
         inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_terms_and_conditions, container, false)
+        container: ViewGroup?
+    ): FragmentTermsAndConditionsBinding {
+        return FragmentTermsAndConditionsBinding.inflate(inflater, container, false)
+    }
 
-      //  registrationViewModel = (activity as RegistrationActivity).registrationViewModel
-
-        view.findViewById<Button>(R.id.next).setOnClickListener {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mBinding.next.setOnClickListener{
             registrationViewModel.acceptTCs()
-            (activity as RegistrationActivity).onTermsAndConditionsAccepted()
+            onTermsAndConditionsAccepted()
         }
+    }
 
-        return view
+    private fun onTermsAndConditionsAccepted() {
+        registrationViewModel.registerUser()
+        findNavController().navigate(R.id.action_termsAndConditionsFragment_to_hiltLoginModuleFragment)
     }
 }

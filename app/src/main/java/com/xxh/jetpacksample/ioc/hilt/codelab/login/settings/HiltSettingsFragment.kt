@@ -16,43 +16,46 @@
 
 package com.xxh.jetpacksample.ioc.hilt.codelab.login.settings
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
-import com.xxh.jetpacksample.JApplication
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.xxh.jetpacksample.R
-import com.xxh.jetpacksample.ioc.hilt.codelab.login.login.LoginActivity
+import com.xxh.jetpacksample.common.BaseFragment
+import com.xxh.jetpacksample.databinding.FragmentHiltSettingsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SettingsActivity : AppCompatActivity() {
+class HiltSettingsFragment : BaseFragment<FragmentHiltSettingsBinding>() {
 
     @Inject
     lateinit var settingsViewModel: SettingsViewModel
+    override fun bindView(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): FragmentHiltSettingsBinding {
+        return FragmentHiltSettingsBinding.inflate(inflater, container, false)
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settings)
-
-        val userManager = (application as JApplication).userManager
-
-        //settingsViewModel = SettingsViewModel(userManager.userDataRepository!!, userManager)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupViews()
     }
 
     private fun setupViews() {
-        findViewById<Button>(R.id.refresh).setOnClickListener {
+       mBinding.refresh.setOnClickListener {
             settingsViewModel.refreshNotifications()
         }
-        findViewById<Button>(R.id.logout).setOnClickListener {
+        mBinding.logout.setOnClickListener {
             settingsViewModel.logout()
-            val intent = Intent(this, LoginActivity::class.java)
+           /* val intent = Intent(this, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or
                     Intent.FLAG_ACTIVITY_CLEAR_TASK or
                     Intent.FLAG_ACTIVITY_NEW_TASK
-            startActivity(intent)
+            startActivity(intent)*/
+            findNavController().navigate(R.id.action_hiltSettingsFragment_to_hiltLoginFragment)
         }
     }
 }

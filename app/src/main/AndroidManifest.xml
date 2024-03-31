@@ -36,26 +36,7 @@
         <activity
             android:name=".ioc.example.ExampleActivity"
             android:exported="false" />
-        <activity
-            android:name=".ioc.hilt.codelab.login.main.DaggerMainActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".ioc.hilt.codelab.login.registration.RegistrationActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".ioc.hilt.codelab.login.login.LoginActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".ioc.hilt.codelab.login.settings.SettingsActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
+
 
         <activity
             android:name=".navigation.example.navigationsample.NavigationSampleMainActivity"

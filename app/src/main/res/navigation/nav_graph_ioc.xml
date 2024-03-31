@@ -8,27 +8,84 @@
     <fragment
         android:id="@+id/iocListFragment"
         android:name="com.xxh.jetpacksample.ioc.IocListFragment"
-        tools:layout="@layout/content_list"
-        android:label="IocListFragment" >
-
+        android:label="IocListFragment"
+        tools:layout="@layout/content_list">
 
         <action
             android:id="@+id/action_iocListFragment_to_buttonsFragment"
-            app:destination="@id/buttonsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/buttonsFragment"
-        android:name="com.xxh.jetpacksample.ioc.hilt.codelab.logs.ui.ButtonsFragment"
-        tools:layout="@layout/fragment_buttons"
-        android:label="ButtonsFragment" >
+            app:destination="@id/navigation3" />
         <action
-            android:id="@+id/action_buttonsFragment_to_logsFragment"
-            app:destination="@id/logsFragment" />
+            android:id="@+id/action_iocListFragment_to_hiltLoginModuleFragment"
+            app:destination="@id/navigation5" />
     </fragment>
-    <fragment
-        android:id="@+id/logsFragment"
-        android:name="com.xxh.jetpacksample.ioc.hilt.codelab.logs.ui.LogsFragment"
-        tools:layout="@layout/fragment_logs"
-        android:label="LogsFragment" />
+    <navigation
+        android:id="@+id/navigation3"
+        app:startDestination="@id/buttonsFragment">
+        <fragment
+            android:id="@+id/logsFragment"
+            android:name="com.xxh.jetpacksample.ioc.hilt.codelab.logs.ui.LogsFragment"
+            tools:layout="@layout/fragment_logs" />
+        <fragment
+            android:id="@+id/buttonsFragment"
+            android:name="com.xxh.jetpacksample.ioc.hilt.codelab.logs.ui.ButtonsFragment"
+            android:label="ButtonsFragment"
+            tools:layout="@layout/fragment_buttons">
+            <action
+                android:id="@+id/action_buttonsFragment_to_logsFragment"
+                app:destination="@id/logsFragment" />
+        </fragment>
+    </navigation>
 
+    <navigation android:id="@+id/navigation5"
+        app:startDestination="@id/hiltLoginModuleFragment">
+        <fragment
+            android:id="@+id/hiltLoginModuleFragment"
+            android:name="com.xxh.jetpacksample.ioc.hilt.codelab.login.main.HiltLoginModuleFragment"
+            android:label="HiltLoginModuleFragment">
+            <action
+                android:id="@+id/action_hiltLoginModuleFragment_to_hiltSettingsFragment"
+                app:destination="@id/hiltSettingsFragment" />
+            <action
+                android:id="@+id/action_hiltLoginModuleFragment_to_hiltLoginFragment"
+                app:destination="@id/hiltLoginFragment" />
+            <action
+                android:id="@+id/action_hiltLoginModuleFragment_to_enterDetailsFragment"
+                app:destination="@id/enterDetailsFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/hiltSettingsFragment"
+            android:name="com.xxh.jetpacksample.ioc.hilt.codelab.login.settings.HiltSettingsFragment"
+            android:label="HiltSettingsFragment" >
+            <action
+                android:id="@+id/action_hiltSettingsFragment_to_hiltLoginFragment"
+                app:destination="@id/hiltLoginFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/hiltLoginFragment"
+            android:name="com.xxh.jetpacksample.ioc.hilt.codelab.login.login.HiltLoginFragment"
+            android:label="HiltLoginFragment" >
+            <action
+                android:id="@+id/action_hiltLoginFragment_to_hiltLoginModuleFragment"
+                app:destination="@id/hiltLoginModuleFragment" />
+            <action
+                android:id="@+id/action_hiltLoginFragment_to_enterDetailsFragment"
+                app:destination="@id/enterDetailsFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/termsAndConditionsFragment"
+            android:name="com.xxh.jetpacksample.ioc.hilt.codelab.login.registration.termsandconditions.TermsAndConditionsFragment"
+            android:label="TermsAndConditionsFragment" >
+            <action
+                android:id="@+id/action_termsAndConditionsFragment_to_hiltLoginModuleFragment"
+                app:destination="@id/hiltLoginModuleFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/enterDetailsFragment"
+            android:name="com.xxh.jetpacksample.ioc.hilt.codelab.login.registration.enterdetails.EnterDetailsFragment"
+            android:label="EnterDetailsFragment">
+            <action
+                android:id="@+id/action_enterDetailsFragment_to_termsAndConditionsFragment"
+                app:destination="@id/termsAndConditionsFragment" />
+        </fragment>
+    </navigation>
 </navigation>

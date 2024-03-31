@@ -23,7 +23,7 @@ import javax.inject.Inject
  * MainViewModel is the ViewModel that [DaggerMainActivity] uses to
  * obtain information of what to show on the screen.
  */
-class DaggerMainViewModel @Inject constructor(private val userDataRepository: UserDataRepository) {
+class LoginMainViewModel @Inject constructor(private val userDataRepository: UserDataRepository) {
 
     val welcomeText: String
         get() = "Hello ${userDataRepository.username}!"

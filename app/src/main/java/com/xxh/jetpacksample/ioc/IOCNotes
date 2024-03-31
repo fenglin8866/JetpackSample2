@@ -1,0 +1,2 @@
+1、Hilt之Login模块中改为ViewModel，怎么创建？生命周期怎么管理？
+2、Hilt之Login模块中的Navigation存在返回堆栈错误问题？
