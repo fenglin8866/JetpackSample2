@@ -28,16 +28,20 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".room.RoomMainActivity" android:theme="@style/Theme.InventoryApp" />
+        <activity
+            android:name=".room.RoomMainActivity"
+            android:theme="@style/Theme.InventoryApp" />
 
         <!-- IOC相关 -->
         <activity android:name=".ioc.IocMainActivity" />
 
         <activity
-            android:name=".ioc.example.ExampleActivity"
+            android:name=".ioc.example.hilt.ExampleActivity"
             android:exported="false" />
 
-
+        <activity
+            android:name=".ioc.example.di.ui.DiLoginActivity"
+            android:exported="false" />
         <activity
             android:name=".navigation.example.navigationsample.NavigationSampleMainActivity"
             android:exported="true">
@@ -98,3 +102,5 @@
     </application>
 
 </manifest>
+
+

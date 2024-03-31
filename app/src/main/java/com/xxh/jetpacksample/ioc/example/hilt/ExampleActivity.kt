@@ -1,4 +1,4 @@
-package com.xxh.jetpacksample.ioc.example
+package com.xxh.jetpacksample.ioc.example.hilt
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

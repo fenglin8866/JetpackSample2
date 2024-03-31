@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ioc.example.ExampleActivity">
+    tools:context=".ioc.example.hilt.ExampleActivity">
 
     <TextView
         android:id="@+id/tv"

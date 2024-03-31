@@ -1,4 +1,4 @@
-package com.xxh.jetpacksample.ioc.example
+package com.xxh.jetpacksample.ioc.example.hilt
 
 import okhttp3.OkHttpClient
 import javax.inject.Inject
