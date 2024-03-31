@@ -29,10 +29,14 @@ import com.xxh.jetpacksample.ioc.hilt.codelab.login.main.DaggerMainActivity
 import com.xxh.jetpacksample.JApplication
 import com.xxh.jetpacksample.ioc.hilt.codelab.login.registration.RegistrationActivity
 import com.xxh.jetpacksample.R
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var loginViewModel: LoginViewModel
+    @Inject
+    lateinit var loginViewModel: LoginViewModel
     private lateinit var errorTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         // Creates ViewModel and listens for the loginState LiveData
-        loginViewModel = LoginViewModel((application as JApplication).userManager)
+       // loginViewModel = LoginViewModel((application as JApplication).userManager)
         loginViewModel.loginState.observe(this, Observer<LoginViewState> { state ->
             when (state) {
                 is LoginSuccess -> {

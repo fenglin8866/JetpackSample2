@@ -18,11 +18,12 @@ package com.xxh.jetpacksample.ioc.hilt.codelab.login.settings
 
 import com.xxh.jetpacksample.ioc.hilt.codelab.login.user.UserDataRepository
 import com.xxh.jetpacksample.ioc.hilt.codelab.login.user.UserManager
+import javax.inject.Inject
 
 /**
  * SettingsViewModel is the ViewModel that [SettingsActivity] uses to handle complex logic.
  */
-class SettingsViewModel(
+class SettingsViewModel @Inject constructor(
     private val userDataRepository: UserDataRepository,
     private val userManager: UserManager
 ) {

@@ -26,10 +26,17 @@ import com.xxh.jetpacksample.ioc.hilt.codelab.login.login.LoginActivity
 import com.xxh.jetpacksample.ioc.hilt.codelab.login.registration.RegistrationActivity
 import com.xxh.jetpacksample.ioc.hilt.codelab.login.settings.SettingsActivity
 import com.xxh.jetpacksample.R
+import com.xxh.jetpacksample.ioc.hilt.codelab.login.user.UserManager
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class DaggerMainActivity : AppCompatActivity() {
 
-    private lateinit var mainViewModel: DaggerMainViewModel
+    @Inject
+    lateinit var mainViewModel: DaggerMainViewModel
+    @Inject
+    lateinit var userManager: UserManager
 
     /**
      * If the User is not registered, RegistrationActivity will be launched,
@@ -39,7 +46,7 @@ class DaggerMainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val userManager = (application as JApplication).userManager
+        //val userManager = (application as JApplication).userManager
         if (!userManager.isUserLoggedIn()) {
             if (!userManager.isUserRegistered()) {
                 startActivity(Intent(this, RegistrationActivity::class.java))
@@ -51,7 +58,7 @@ class DaggerMainActivity : AppCompatActivity() {
         } else {
             setContentView(R.layout.activity_main_dagger)
 
-            mainViewModel = DaggerMainViewModel(userManager.userDataRepository!!)
+           // mainViewModel = DaggerMainViewModel(userManager.userDataRepository!!)
             setupViews()
         }
     }

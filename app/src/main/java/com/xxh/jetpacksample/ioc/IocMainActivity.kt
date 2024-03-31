@@ -17,7 +17,7 @@ class IocMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_ioc)
         val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment_room) as NavHostFragment
+            .findFragmentById(R.id.nav_host_fragment_ioc) as NavHostFragment
         navController = navHostFragment.navController
 //        setupActionBarWithNavController(navController)
     }

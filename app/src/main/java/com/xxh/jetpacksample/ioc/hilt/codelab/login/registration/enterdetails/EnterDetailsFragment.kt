@@ -28,7 +28,10 @@ import androidx.fragment.app.Fragment
 import com.xxh.jetpacksample.ioc.hilt.codelab.login.registration.RegistrationActivity
 import com.xxh.jetpacksample.ioc.hilt.codelab.login.registration.RegistrationViewModel
 import com.xxh.jetpacksample.R
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class EnterDetailsFragment : Fragment() {
 
     /**
@@ -40,8 +43,10 @@ class EnterDetailsFragment : Fragment() {
      * They could get combined but for the sake of the codelab, we're separating them so we have
      * different ViewModels with different lifecycles.
      */
-    private lateinit var registrationViewModel: RegistrationViewModel
-    private lateinit var enterDetailsViewModel: EnterDetailsViewModel
+    @Inject
+    lateinit var registrationViewModel: RegistrationViewModel
+    @Inject
+    lateinit var enterDetailsViewModel: EnterDetailsViewModel
 
     private lateinit var errorTextView: TextView
     private lateinit var usernameEditText: EditText
@@ -54,9 +59,9 @@ class EnterDetailsFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_enter_details, container, false)
 
-        registrationViewModel = (activity as RegistrationActivity).registrationViewModel
+        //registrationViewModel = (activity as RegistrationActivity).registrationViewModel
 
-        enterDetailsViewModel = EnterDetailsViewModel()
+       // enterDetailsViewModel = EnterDetailsViewModel()
         enterDetailsViewModel.enterDetailsState.observe(
             viewLifecycleOwner
         ) { state ->

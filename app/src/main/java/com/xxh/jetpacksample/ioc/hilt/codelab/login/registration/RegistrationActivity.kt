@@ -24,16 +24,20 @@ import com.xxh.jetpacksample.R
 import com.xxh.jetpacksample.ioc.hilt.codelab.login.main.DaggerMainActivity
 import com.xxh.jetpacksample.ioc.hilt.codelab.login.registration.enterdetails.EnterDetailsFragment
 import com.xxh.jetpacksample.ioc.hilt.codelab.login.registration.termsandconditions.TermsAndConditionsFragment
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class RegistrationActivity : AppCompatActivity() {
 
+    @Inject
     lateinit var registrationViewModel: RegistrationViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
 
-        registrationViewModel = RegistrationViewModel((application as JApplication).userManager)
+       // registrationViewModel = RegistrationViewModel((application as JApplication).userManager)
         supportFragmentManager.beginTransaction()
             .add(R.id.fragment_holder, EnterDetailsFragment())
             .commit()

@@ -17,6 +17,8 @@
 package com.xxh.jetpacksample.ioc.hilt.codelab.login.user
 
 import com.xxh.jetpacksample.ioc.hilt.codelab.login.storage.Storage
+import javax.inject.Inject
+import javax.inject.Singleton
 
 private const val REGISTERED_USER = "registered_user"
 private const val PASSWORD_SUFFIX = "password"
@@ -28,7 +30,8 @@ private const val PASSWORD_SUFFIX = "password"
  *
  * 用于ViewModel处理
  */
-class UserManager(private val storage: Storage) {
+@Singleton
+class UserManager @Inject constructor(private val storage: Storage) {
 
     /**
      *  UserDataRepository is specific to a logged in user. This determines if the user

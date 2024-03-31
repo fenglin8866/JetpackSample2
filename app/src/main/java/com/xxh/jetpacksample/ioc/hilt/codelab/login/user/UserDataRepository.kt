@@ -16,6 +16,8 @@
 
 package com.xxh.jetpacksample.ioc.hilt.codelab.login.user
 
+import javax.inject.Inject
+import javax.inject.Singleton
 import kotlin.random.Random
 
 /**
@@ -23,7 +25,8 @@ import kotlin.random.Random
  * UserDataRepository 包含特定于用户的数据，例如用户名和未读通知。
  * 用于界面展示数据
  */
-class UserDataRepository(private val userManager: UserManager) {
+@Singleton
+class UserDataRepository @Inject constructor(private val userManager: UserManager) {
 
     val username: String
         get() = userManager.username

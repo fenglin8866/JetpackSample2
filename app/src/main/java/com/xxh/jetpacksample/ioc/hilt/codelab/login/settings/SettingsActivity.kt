@@ -23,10 +23,14 @@ import androidx.appcompat.app.AppCompatActivity
 import com.xxh.jetpacksample.JApplication
 import com.xxh.jetpacksample.R
 import com.xxh.jetpacksample.ioc.hilt.codelab.login.login.LoginActivity
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SettingsActivity : AppCompatActivity() {
 
-    private lateinit var settingsViewModel: SettingsViewModel
+    @Inject
+    lateinit var settingsViewModel: SettingsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +38,7 @@ class SettingsActivity : AppCompatActivity() {
 
         val userManager = (application as JApplication).userManager
 
-        settingsViewModel = SettingsViewModel(userManager.userDataRepository!!, userManager)
+        //settingsViewModel = SettingsViewModel(userManager.userDataRepository!!, userManager)
         setupViews()
     }
 
