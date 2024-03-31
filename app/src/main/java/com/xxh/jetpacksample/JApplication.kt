@@ -11,14 +11,8 @@ import kotlinx.coroutines.SupervisorJob
 
 @HiltAndroidApp
 class JApplication : Application() {
-    /*lateinit var serviceLocator: ServiceLocator
 
-    override fun onCreate() {
-        super.onCreate()
-        serviceLocator = ServiceLocator(applicationContext)
-    }*/
-
-    open val userManager by lazy {
+    val userManager by lazy {
         UserManager(SharedPreferencesStorage(this))
     }
 

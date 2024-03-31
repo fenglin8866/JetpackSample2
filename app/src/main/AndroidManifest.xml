@@ -37,9 +37,6 @@
             android:name=".ioc.example.ExampleActivity"
             android:exported="false" />
         <activity
-            android:name=".ioc.hilt.codelab.logs.ui.HiltMainActivity"
-            android:exported="false" />
-        <activity
             android:name=".ioc.hilt.codelab.login.main.DaggerMainActivity"
             android:exported="false"
             android:screenOrientation="portrait"

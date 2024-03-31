@@ -18,6 +18,9 @@ package com.xxh.jetpacksample.ioc.hilt.codelab.login.storage
 
 import android.content.Context
 
+/**
+ * 使用SP存取
+ */
 class SharedPreferencesStorage(context: Context) : Storage {
 
     private val sharedPreferences = context.getSharedPreferences("Dagger", Context.MODE_PRIVATE)

@@ -22,11 +22,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.xxh.jetpacksample.ioc.hilt.codelab.logs.data.Log
 import com.xxh.jetpacksample.ioc.hilt.codelab.logs.util.DateFormatter
 import com.xxh.jetpacksample.R
+import com.xxh.jetpacksample.common.BaseFragment
+import com.xxh.jetpacksample.databinding.FragmentLogsBinding
 import com.xxh.jetpacksample.ioc.hilt.codelab.logs.data.LoggerDataSource
 import com.xxh.jetpacksample.ioc.hilt.codelab.logs.di.InMemoryLogger
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,7 +37,7 @@ import javax.inject.Inject
  * Fragment that displays the database logs.
  */
 @AndroidEntryPoint
-class LogsFragment : Fragment() {
+class LogsFragment : BaseFragment<FragmentLogsBinding>() {
     @InMemoryLogger
     @Inject
     lateinit var logger: LoggerDataSource
@@ -44,39 +45,21 @@ class LogsFragment : Fragment() {
     @Inject
     lateinit var dateFormatter: DateFormatter
 
-    private lateinit var recyclerView: RecyclerView
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_logs, container, false)
+    override fun bindView(inflater: LayoutInflater, container: ViewGroup?): FragmentLogsBinding {
+        return FragmentLogsBinding.inflate(inflater,container,false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view).apply {
+        mBinding.recyclerView.apply {
             setHasFixedSize(true)
         }
     }
-
-    /* override fun onAttach(context: Context) {
-         super.onAttach(context)
-
-         populateFields(context)
-     }
-
-     private fun populateFields(context: Context) {
-         logger = (context.applicationContext as JApplication).serviceLocator.loggerLocalDataSource
-         dateFormatter =
-             (context.applicationContext as JApplication).serviceLocator.provideDateFormatter()
-     }*/
 
     override fun onResume() {
         super.onResume()
 
         logger.getAllLogs { logs ->
-            recyclerView.adapter =
+            mBinding.recyclerView.adapter =
                 LogsViewAdapter(
                     logs,
                     dateFormatter

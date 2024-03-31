@@ -20,13 +20,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.xxh.jetpacksample.R
+import com.xxh.jetpacksample.common.BaseFragment
+import com.xxh.jetpacksample.databinding.FragmentButtonsBinding
 import com.xxh.jetpacksample.ioc.hilt.codelab.logs.data.LoggerDataSource
 import com.xxh.jetpacksample.ioc.hilt.codelab.logs.di.InMemoryLogger
-import com.xxh.jetpacksample.ioc.hilt.codelab.logs.navigator.AppNavigator
-import com.xxh.jetpacksample.ioc.hilt.codelab.logs.navigator.Screens
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -34,54 +33,34 @@ import javax.inject.Inject
  * Fragment that displays buttons whose interactions are recorded.
  */
 @AndroidEntryPoint
-class ButtonsFragment : Fragment() {
+class ButtonsFragment : BaseFragment<FragmentButtonsBinding>() {
     @InMemoryLogger
     @Inject
     lateinit var logger: LoggerDataSource
 
-    @Inject
-    lateinit var navigator: AppNavigator
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_buttons, container, false)
+    override fun bindView(inflater: LayoutInflater, container: ViewGroup?): FragmentButtonsBinding {
+        return FragmentButtonsBinding.inflate(inflater,container,false)
     }
-
-    /*override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        populateFields(context)
-    }
-
-    private fun populateFields(context: Context) {
-        logger = (context.applicationContext as JApplication).
-            serviceLocator.loggerLocalDataSource
-
-        navigator = (context.applicationContext as JApplication).
-            serviceLocator.provideNavigator(requireActivity())
-    }*/
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        view.findViewById<Button>(R.id.button1).setOnClickListener {
+       mBinding.button1.setOnClickListener {
             logger.addLog("Interaction with 'Button 1'")
         }
 
-        view.findViewById<Button>(R.id.button2).setOnClickListener {
+        mBinding.button2.setOnClickListener {
             logger.addLog("Interaction with 'Button 2'")
         }
 
-        view.findViewById<Button>(R.id.button3).setOnClickListener {
+        mBinding.button3.setOnClickListener {
             logger.addLog("Interaction with 'Button 3'")
         }
 
-        view.findViewById<Button>(R.id.all_logs).setOnClickListener {
-            navigator.navigateTo(Screens.LOGS)
+        mBinding.allLogs.setOnClickListener {
+            //navigator.navigateTo(Screens.LOGS)
+            findNavController().navigate(R.id.action_buttonsFragment_to_logsFragment)
         }
 
-        view.findViewById<Button>(R.id.delete_logs).setOnClickListener {
+        mBinding.deleteLogs.setOnClickListener {
             logger.removeLogs()
         }
     }

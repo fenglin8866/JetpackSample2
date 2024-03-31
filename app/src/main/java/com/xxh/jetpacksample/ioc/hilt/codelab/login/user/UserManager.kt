@@ -24,6 +24,9 @@ private const val PASSWORD_SUFFIX = "password"
 /**
  * Handles User lifecycle. Manages registrations, logs in and logs out.
  * Knows when the user is logged in.
+ * 处理用户生命周期。管理注册、登录和退出。知道用户何时登录。
+ *
+ * 用于ViewModel处理
  */
 class UserManager(private val storage: Storage) {
 
@@ -31,22 +34,35 @@ class UserManager(private val storage: Storage) {
      *  UserDataRepository is specific to a logged in user. This determines if the user
      *  is logged in or not, when the user logs in, a new instance will be created.
      *  When the user logs out, this will be null.
+     *  UserDataRepository 特定于登录用户。这决定了用户是否登录，当用户登录时，将创建一个新实例。当用户注销时，这将为 null。
      */
     var userDataRepository: UserDataRepository? = null
 
     val username: String
         get() = storage.getString(REGISTERED_USER)
 
+    /**
+     * 是否登录
+     */
     fun isUserLoggedIn() = userDataRepository != null
 
+    /**
+     * 是否注册
+     */
     fun isUserRegistered() = storage.getString(REGISTERED_USER).isNotEmpty()
 
+    /**
+     * 注册操作
+     */
     fun registerUser(username: String, password: String) {
         storage.setString(REGISTERED_USER, username)
         storage.setString("$username$PASSWORD_SUFFIX", password)
         userJustLoggedIn()
     }
 
+    /**
+     * 登录操作
+     */
     fun loginUser(username: String, password: String): Boolean {
         val registeredUser = this.username
         if (registeredUser != username) return false
@@ -58,10 +74,16 @@ class UserManager(private val storage: Storage) {
         return true
     }
 
+    /**
+     * 退出操作
+     */
     fun logout() {
         userDataRepository = null
     }
 
+    /**
+     * 未登录操作
+     */
     fun unregister() {
         val username = storage.getString(REGISTERED_USER)
         storage.setString(REGISTERED_USER, "")

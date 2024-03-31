@@ -20,6 +20,8 @@ import kotlin.random.Random
 
 /**
  * UserDataRepository contains user-specific data such as username and unread notifications.
+ * UserDataRepository 包含特定于用户的数据，例如用户名和未读通知。
+ * 用于界面展示数据
  */
 class UserDataRepository(private val userManager: UserManager) {
 

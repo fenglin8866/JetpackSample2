@@ -16,6 +16,9 @@
 
 package com.xxh.jetpacksample.ioc.hilt.codelab.login.storage
 
+/**
+ * key-value存取接口
+ */
 interface Storage {
     fun setString(key: String, value: String)
     fun getString(key: String): String
