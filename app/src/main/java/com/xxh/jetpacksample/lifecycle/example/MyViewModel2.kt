@@ -1,7 +1,6 @@
-package com.xxh.jetpacksample.lifecycle
+package com.xxh.jetpacksample.lifecycle.example
 
 import androidx.lifecycle.ViewModel
-import com.xxh.jetpacksample.lifecycle.CloseableCoroutineScope
 
 class MyViewModel2(
     private val coroutineScope: CloseableCoroutineScope = CloseableCoroutineScope()

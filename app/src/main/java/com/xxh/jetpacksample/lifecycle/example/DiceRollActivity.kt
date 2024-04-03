@@ -1,4 +1,4 @@
-package com.xxh.jetpacksample.lifecycle
+package com.xxh.jetpacksample.lifecycle.example
 
 import android.os.Bundle
 import android.os.PersistableBundle

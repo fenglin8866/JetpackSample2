@@ -1,4 +1,4 @@
-package com.xxh.jetpacksample.lifecycle
+package com.xxh.jetpacksample.lifecycle.example
 
 data class DiceUiState(
     val firstDieValue: Int? = null,

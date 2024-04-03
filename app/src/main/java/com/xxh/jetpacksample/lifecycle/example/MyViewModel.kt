@@ -1,4 +1,4 @@
-package com.xxh.jetpacksample.lifecycle
+package com.xxh.jetpacksample.lifecycle.example
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
