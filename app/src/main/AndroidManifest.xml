@@ -98,6 +98,12 @@
         <activity
             android:name="com.xxh.jetpacksample.navigation.NavigationMainActivity"
             android:exported="false" />
+        <activity
+            android:name="com.xxh.jetpacksample.lifecycle.LifecycleMainActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.xxh.jetpacksample.lifecycle.example.persistence.ui.PersistenceActivity"
+            android:exported="false" />
 
     </application>
 

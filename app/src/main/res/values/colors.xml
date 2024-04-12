@@ -19,4 +19,6 @@
     <color name="purple_200">#FFBB86FC</color>
 
     <color name="red_700">#FFD32F2F</color>
+
+    <color name="comment_light_background">#d6d6d6</color>
 </resources>

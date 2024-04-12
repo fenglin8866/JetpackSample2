@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.devtools.ksp'
 }
 
 android {
@@ -81,13 +82,13 @@ dependencies {
     implementation "androidx.profileinstaller:profileinstaller:$rootProject.profileInstallerVersion"
     implementation "androidx.tracing:tracing-ktx:$rootProject.tracingVersion"
 
-    kapt "com.google.dagger:hilt-android-compiler:$rootProject.hiltVersion"
+    ksp "com.google.dagger:hilt-android-compiler:$rootProject.hiltVersion"
     implementation "com.google.dagger:hilt-android:$rootProject.hiltVersion"
 
 
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"
     implementation "androidx.room:room-ktx:$rootProject.roomVersion"
-    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
+    ksp "androidx.room:room-compiler:$rootProject.roomVersion"
 
 
     // Kotlin components
@@ -101,7 +102,7 @@ dependencies {
     implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
 
     implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
-    kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
+    ksp "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
 
 
     testImplementation 'junit:junit:4.13.2'

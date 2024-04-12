@@ -1,4 +1,4 @@
-package com.xxh.jetpacksample.lifecycle.example
+package com.xxh.jetpacksample.lifecycle.example.test
 
 import androidx.lifecycle.ViewModel
 

@@ -75,7 +75,8 @@ class LogsContentProvider: ContentProvider() {
             val cursor: Cursor? = if (code == CODE_LOGS_DIR) {
                 logDao.selectAllLogsCursor()
             } else {
-                logDao.selectLogById(ContentUris.parseId(uri))
+                /*logDao.selectLogById(ContentUris.parseId(uri))*/
+                null
             }
             cursor?.setNotificationUri(appContext.contentResolver, uri)
             cursor
