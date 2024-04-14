@@ -1,6 +1,6 @@
 package com.xxh.jetpacksample
 
-import android.app.Application
+import com.example.android.architecture.blueprints.todoapp.TodoApplication
 import com.xxh.jetpacksample.ioc.example.di.AppContainer
 import com.xxh.jetpacksample.lifecycle.example.persistence.AppExecutors
 import com.xxh.jetpacksample.lifecycle.example.persistence.DataRepository
@@ -12,7 +12,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 
 @HiltAndroidApp
-class JApplication : Application() {
+class JApplication : TodoApplication() {
 
     val appContainer = AppContainer()
 
@@ -30,6 +30,7 @@ class JApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         mAppExecutors= AppExecutors()
+       // if (BuildConfig.DEBUG) Timber.plant(DebugTree())
     }
 
     /*private fun getDatabase(): PersistenceAppDatabase {
@@ -39,4 +40,6 @@ class JApplication : Application() {
     fun getProductRepository(): DataRepository {
         return DataRepository.getInstance(databaseApp2)
     }
+
+
 }

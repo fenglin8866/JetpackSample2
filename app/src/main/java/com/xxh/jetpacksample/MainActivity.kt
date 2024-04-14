@@ -3,6 +3,7 @@ package com.xxh.jetpacksample
 import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
+import com.example.android.architecture.blueprints.todoapp.tasks.TasksActivity
 import com.google.samples.apps.sunflower.GardenActivity
 import com.xxh.jetpacksample.common.ListBaseActivity
 import com.xxh.jetpacksample.ioc.IocMainActivity
@@ -17,7 +18,8 @@ class MainActivity : ListBaseActivity() {
         "IOC",
         "Room",
         "Navigation",
-        "SunFlower"
+        "SunFlower",
+        "Todo"
     )
 
     override fun setClickIntent(name: String): Intent? = when (name) {
@@ -26,6 +28,7 @@ class MainActivity : ListBaseActivity() {
         "Room" -> Intent(this, RoomMainActivity::class.java)
         "Navigation" -> Intent(this, NavigationMainActivity::class.java)
         "SunFlower" -> Intent(this, GardenActivity::class.java)
+        "Todo" -> Intent(this, TasksActivity::class.java)
         else -> null
     }
 }
