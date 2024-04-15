@@ -60,7 +60,7 @@ kapt {
 }
 
 dependencies {
-    implementation project(':sunflowerlibrary')
+    implementation project(':sunflower')
     implementation project(':todo')
     implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
     implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"

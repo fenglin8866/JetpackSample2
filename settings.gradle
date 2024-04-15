@@ -15,5 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "JetpackSample2"
 include ':app'
-include ':sunflowerlibrary'
+include ':sunflower'
 include ':todo'
