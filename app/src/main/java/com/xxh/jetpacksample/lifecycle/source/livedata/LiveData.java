@@ -100,6 +100,13 @@ public abstract class LiveData<T> {
         mVersion = START_VERSION;
     }
 
+    /**
+     * 根据对应的条件考虑是否通知Observer变化
+     * 1.是否active状态
+     * 2。判断shouldBeActive，用于扩展添加过滤
+     * 3。observer版本是否小于Livedata的版本
+     * @param observer
+     */
     @SuppressWarnings("unchecked")
     private void considerNotify(LiveData.ObserverWrapper observer) {
         if (!observer.mActive) {
@@ -121,6 +128,12 @@ public abstract class LiveData<T> {
         observer.mObserver.onChanged((T) mData);
     }
 
+    /**
+     * Observer处于active状态LiveData分发值
+     *  如果正在处理更新时，有新的分发，则通过mDispatchInvalidated，循环继续处理分发。
+     *
+     * @param initiator
+     */
     @SuppressWarnings("WeakerAccess") /* synthetic access */
     void dispatchingValue(@Nullable LiveData.ObserverWrapper initiator) {
         if (mDispatchingValue) {
@@ -135,7 +148,7 @@ public abstract class LiveData<T> {
                 initiator = null;
             } else {
                 //fixme
-               /* for (Iterator<Map.Entry<Observer<? super T>, ObserverWrapper>> iterator =
+                /*for (Iterator<Map.Entry<Observer<? super T>, ObserverWrapper>> iterator =
                      mObservers.iteratorWithAdditions(); iterator.hasNext(); ) {
                     considerNotify(iterator.next().getValue());
                     if (mDispatchInvalidated) {
@@ -235,6 +248,7 @@ public abstract class LiveData<T> {
         if (removed == null) {
             return;
         }
+        //todo:为什么添加这两个方法
         removed.detachObserver();
         removed.activeStateChanged(false);
     }
@@ -340,6 +354,7 @@ public abstract class LiveData<T> {
      * <p>
      * This callback can be used to know that this LiveData is being used thus should be kept
      * up to date.
+     * 当活动观察者的数量从 0 变为 1 时调用。<p> 此回调可用于了解此 LiveData 是否正在被使用，因此应保持最新状态。
      */
     protected void onActive() {
 
@@ -353,6 +368,11 @@ public abstract class LiveData<T> {
      * (like an Activity in the back stack).
      * <p>
      * You can check if there are observers via {@link #hasObservers()}.
+     *
+     * 当活动观察者的数量从 1 变为 0 时调用。
+     * 这并不意味着没有观察者，可能仍然有观察者，但它们的生命周期状态不是 {Lifecycle.StateSTARTED} 或 {Lifecycle.StateRESUMED}（就像后退堆栈中的 Activity）。
+     * 您可以通过 {@link #hasObservers()} 检查是否有观察者。
+     *
      */
     protected void onInactive() {
 
@@ -378,6 +398,7 @@ public abstract class LiveData<T> {
         return mActiveCount > 0;
     }
 
+    //todo
     @MainThread
     void changeActiveCounter(int change) {
         int previousActiveCount = mActiveCount;
@@ -387,6 +408,11 @@ public abstract class LiveData<T> {
         }
         mChangingActiveState = true;
         try {
+            /**
+             *  todo 为什么使用while循环？
+             *  类似：dispatchingValue中处理，
+             *  可能存在场景：正在处理的时候，外部又调用了changeActiveCounter。
+             */
             while (previousActiveCount != mActiveCount) {
                 boolean needToCallActive = previousActiveCount == 0 && mActiveCount > 0;
                 boolean needToCallInactive = previousActiveCount > 0 && mActiveCount == 0;
@@ -399,6 +425,59 @@ public abstract class LiveData<T> {
             }
         } finally {
             mChangingActiveState = false;
+        }
+    }
+
+    /**
+     * Observer装饰器
+     * 对Observer的封装，添加active状态，
+     * 并对active状态变化的处理
+     */
+    private abstract class ObserverWrapper {
+        final Observer<? super T> mObserver;
+        boolean mActive;
+        int mLastVersion = START_VERSION;
+
+        ObserverWrapper(Observer<? super T> observer) {
+            mObserver = observer;
+        }
+
+        //应该处于active
+        abstract boolean shouldBeActive();
+
+        //是否attach在传入的LifecycleOwner上
+        boolean isAttachedTo(LifecycleOwner owner) {
+            return false;
+        }
+
+        //解绑Observer
+        void detachObserver() {
+        }
+
+        //active状态改变时处理
+        void activeStateChanged(boolean newActive) {
+            if (newActive == mActive) {
+                return;
+            }
+            // immediately set active state, so we'd never dispatch anything to inactive
+            // owner
+            mActive = newActive;
+            changeActiveCounter(mActive ? 1 : -1);
+            if (mActive) {
+                dispatchingValue(this);
+            }
+        }
+    }
+
+    private class AlwaysActiveObserver extends LiveData.ObserverWrapper {
+
+        AlwaysActiveObserver(Observer<? super T> observer) {
+            super(observer);
+        }
+
+        @Override
+        boolean shouldBeActive() {
+            return true;
         }
     }
 
@@ -440,50 +519,6 @@ public abstract class LiveData<T> {
         @Override
         void detachObserver() {
             mOwner.getLifecycle().removeObserver(this);
-        }
-    }
-
-    private abstract class ObserverWrapper {
-        final Observer<? super T> mObserver;
-        boolean mActive;
-        int mLastVersion = START_VERSION;
-
-        ObserverWrapper(Observer<? super T> observer) {
-            mObserver = observer;
-        }
-
-        abstract boolean shouldBeActive();
-
-        boolean isAttachedTo(LifecycleOwner owner) {
-            return false;
-        }
-
-        void detachObserver() {
-        }
-
-        void activeStateChanged(boolean newActive) {
-            if (newActive == mActive) {
-                return;
-            }
-            // immediately set active state, so we'd never dispatch anything to inactive
-            // owner
-            mActive = newActive;
-            changeActiveCounter(mActive ? 1 : -1);
-            if (mActive) {
-                dispatchingValue(this);
-            }
-        }
-    }
-
-    private class AlwaysActiveObserver extends LiveData.ObserverWrapper {
-
-        AlwaysActiveObserver(Observer<? super T> observer) {
-            super(observer);
-        }
-
-        @Override
-        boolean shouldBeActive() {
-            return true;
         }
     }
 

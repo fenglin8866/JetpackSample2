@@ -49,7 +49,7 @@ import java.util.Map;
  * });
  * </pre>
  *
- * @param <T> The type of data hold by this instance
+ * @param <T> The type of data hold by this instance/ˈmiːdieɪtər/
  */
 @SuppressWarnings("WeakerAccess")
 public class MediatorLiveData<T> extends MutableLiveData<T> {
@@ -72,6 +72,7 @@ public class MediatorLiveData<T> extends MutableLiveData<T> {
     }
 
     /**
+     * todo：怎么实现与LiveData之间的关联
      * Starts to listen to the given {@code source} LiveData, {@code onChanged} observer will be
      * called when {@code source} value was changed.
      * <p>
@@ -120,7 +121,7 @@ public class MediatorLiveData<T> extends MutableLiveData<T> {
     @Override
     protected void onActive() {
         for (Map.Entry<LiveData<?>, MediatorLiveData.Source<?>> source : mSources) {
-            source.getValue().plug();
+            source.getValue().plug();//plʌɡ
         }
     }
 
@@ -132,6 +133,12 @@ public class MediatorLiveData<T> extends MutableLiveData<T> {
         }
     }
 
+    /**
+     *  封了LiveData和对应的Observer
+     *  Source中mVersion与LiveData中Version同步。
+     *  当Version不一致时更新传入Observer
+     * @param <V>
+     */
     private static class Source<V> implements Observer<V> {
         final LiveData<V> mLiveData;
         final Observer<? super V> mObserver;

@@ -41,8 +41,11 @@ open class LifecycleRegistry private constructor(
      * well.
      */
     private val lifecycleOwner: WeakReference<LifecycleOwner>
+    //正在添加observer的计数器
     private var addingObserverCounter = 0
+    //正在处理State状态变化产生的Event事件
     private var handlingEvent = false
+    //标记handlingEvent或addingObserver事件
     private var newEventOccurred = false
 
     // we have to keep it for cases:
@@ -293,7 +296,7 @@ open class LifecycleRegistry private constructor(
     }
 
     /**
-     * 项Lifecycle添加观察者时
+     * 向Lifecycle添加观察者时
      * 封装观察者和状态，并提供分发事件方法，当状态发生变化时observer执行回调事件。
      * 该类内状态跟随Lifecycle的状态变化。
      */

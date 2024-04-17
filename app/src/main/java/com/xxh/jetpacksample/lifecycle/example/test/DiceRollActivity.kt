@@ -29,6 +29,9 @@ class DiceRollActivity : AppCompatActivity() {
                     // Update UI elements
                 }
             }
+            lifecycle.currentStateFlow.collect{
+
+            }
         }
     }
 

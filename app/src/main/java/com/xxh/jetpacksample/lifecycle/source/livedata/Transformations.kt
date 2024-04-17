@@ -160,8 +160,9 @@ fun <X, Y> LiveData<X>.switchMap(switchMapFunction: Function<X, LiveData<Y>>): L
 /**
  * Creates a new [LiveData] object does not emit a value until the source `this` LiveData value
  * has been changed. The value is considered changed if `equals()` yields `false`.
- *
  * @return a new [LiveData] of type `X`
+ *
+ * 在更改源“this”LiveData 值之前，创建新的 [LiveData] 对象不会发出值。如果 'equals（）' 产生 'false'，则认为该值已更改。
  */
 @JvmName("distinctUntilChanged")
 @MainThread

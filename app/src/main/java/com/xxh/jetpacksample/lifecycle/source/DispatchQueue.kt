@@ -10,6 +10,7 @@ import kotlinx.coroutines.Dispatchers
 /**
  * Helper class for [PausingDispatcher] that tracks runnables which are enqueued to the dispatcher
  * and also calls back the [PausingDispatcher] when the runnable should run.
+ * [PausingDispatcher] 的帮助程序类，用于跟踪排队到调度程序的可运行项，并在可运行项应运行时回调 [PausingDispatcher]。
  */
 internal class DispatchQueue {
     // handler thread

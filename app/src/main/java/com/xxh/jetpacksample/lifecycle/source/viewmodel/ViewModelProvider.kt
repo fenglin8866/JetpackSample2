@@ -13,9 +13,11 @@ import java.lang.reflect.InvocationTargetException
 
 /**
  * A utility class that provides `ViewModels` for a scope.
+ * 为作用域提供“ViewModels”的实用工具类。
  *
  * Default `ViewModelProvider` for an `Activity` or a `Fragment` can be obtained
  * by passing it to the constructor: `ViewModelProvider(myFragment)`
+ * 可以通过将“Activity”或“Fragment”的默认“ViewModelProvider”传递给构造函数来获取：“ViewModelProvider（myFragment）”
  */
 open class ViewModelProvider
 /**
@@ -23,7 +25,9 @@ open class ViewModelProvider
  *
  * @param store `ViewModelStore` where ViewModels will be stored.
  * @param factory factory a `Factory` which will be used to instantiate new `ViewModels`
+ * factory 一个“工厂”，将用于实例化新的“ViewModel”
  * @param defaultCreationExtras extras to pass to a factory
+ * 传递给工厂的额外内容
  */
 @JvmOverloads
 constructor(
@@ -33,6 +37,7 @@ constructor(
 ) {
     /**
      * Implementations of `Factory` interface are responsible to instantiate ViewModels.
+     * “Factory”接口的实现负责实例化 ViewModel。
      */
     interface Factory {
         /**
@@ -167,6 +172,7 @@ constructor(
 
     /**
      * Simple factory, which calls empty constructor on the give class.
+     * 简单工厂，它在给定类上调用空构造函数。
      */
     // actually there is getInstance()
     @Suppress("SingletonConstructor")

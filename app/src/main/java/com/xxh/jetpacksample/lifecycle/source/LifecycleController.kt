@@ -5,6 +5,7 @@ import kotlinx.coroutines.Job
 
 /**
  * Attaches to a lifecycle and controls the [DispatchQueue]'s execution.
+ * 附加到生命周期并控制 [DispatchQueue] 的执行。
  */
 @MainThread
 internal class LifecycleController(
