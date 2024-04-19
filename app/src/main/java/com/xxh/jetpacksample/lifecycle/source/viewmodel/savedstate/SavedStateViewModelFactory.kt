@@ -15,11 +15,14 @@ import java.lang.reflect.Constructor
 import java.lang.reflect.InvocationTargetException
 
 /**
+ *
+ * 构建 ViewModel的Factory，包含 application 和 SavedStateHandle 参数
  * [androidx.lifecycle.ViewModelProvider.Factory] that can create ViewModels accessing and
  * contributing to a saved state via [SavedStateHandle] received in a constructor.
  * If `defaultArgs` bundle was passed into the constructor, it will provide default
  * values in `SavedStateHandle`.
- *
+ *[androidx.lifecycle.ViewModelProvider.Factory] 可以创建 ViewModel，通过构造函数中收到的 [SavedStateHandle] 访问和参与保存的状态。
+ * 如果将“defaultArgs”捆绑包传递到构造函数中，它将在“SavedStateHandle”中提供默认值。
  * If ViewModel is instance of [androidx.lifecycle.AndroidViewModel], it looks for a
  * constructor that receives an [Application] and [SavedStateHandle] (in this order),
  * otherwise it looks for a constructor that receives [SavedStateHandle] only.
@@ -106,14 +109,17 @@ class SavedStateViewModelFactory : ViewModelProvider.OnRequeryFactory, ViewModel
             val application = extras[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY]
             val isAndroidViewModel = AndroidViewModel::class.java.isAssignableFrom(modelClass)
             val constructor: Constructor<T>? = if (isAndroidViewModel && application != null) {
+                //获取包含Application::class.java, SavedStateHandle::class.java构造函数
                 findMatchingConstructor(modelClass, ANDROID_VIEWMODEL_SIGNATURE)
             } else {
+                //获取包含SavedStateHandle::class.java构造函数
                 findMatchingConstructor(modelClass, VIEWMODEL_SIGNATURE)
             }
             // doesn't need SavedStateHandle
             if (constructor == null) {
                 return factory.create(modelClass, extras)
             }
+            //构建ViewModel对象
             val viewModel = if (isAndroidViewModel && application != null) {
                 newInstance(modelClass, constructor, application, extras.createSavedStateHandle())
             } else {

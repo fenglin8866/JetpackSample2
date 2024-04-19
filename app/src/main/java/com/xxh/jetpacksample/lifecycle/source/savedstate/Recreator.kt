@@ -5,7 +5,11 @@ import com.xxh.jetpacksample.lifecycle.source.Lifecycle
 import com.xxh.jetpacksample.lifecycle.source.LifecycleEventObserver
 import com.xxh.jetpacksample.lifecycle.source.LifecycleOwner
 
-
+/**
+ * 定义生命周期观察者
+ * 在ON_CREATE执行，并且只执行一次。
+ * 获取SavedStateProvider对象，并根据类名反射创建对象调用onRecreated方法。
+ */
 internal class Recreator(
     private val owner: SavedStateRegistryOwner
 ) : LifecycleEventObserver {
@@ -55,6 +59,10 @@ internal class Recreator(
         newInstance.onRecreated(owner)
     }
 
+    /**
+     * 定义一个状态保存提供者，并注册到传入的SavedStateRegistry上。
+     * 存储:个String数组（className：是SavedStateRegistry.AutoRecreated的子类）
+     */
     internal class SavedStateProvider(registry: SavedStateRegistry) :
         SavedStateRegistry.SavedStateProvider {
 

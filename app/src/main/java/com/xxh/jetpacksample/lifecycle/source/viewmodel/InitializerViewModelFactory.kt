@@ -4,20 +4,21 @@ import kotlin.reflect.KClass
 
 
 @DslMarker
-public annotation class ViewModelFactoryDsl
+annotation class ViewModelFactoryDsl
 
 /**
  * Creates an [InitializerViewModelFactory] with the initializers provided in the builder.
  */
-public inline fun viewModelFactory(
+inline fun viewModelFactory(
     builder: InitializerViewModelFactoryBuilder.() -> Unit
 ): ViewModelProvider.Factory = InitializerViewModelFactoryBuilder().apply(builder).build()
 
 /**
+ * 用于构建InitializerViewModelFactory的建造器
  * DSL for constructing a new [ViewModelProvider.Factory]
  */
 @ViewModelFactoryDsl
-public class InitializerViewModelFactoryBuilder {
+class InitializerViewModelFactoryBuilder {
     private val initializers = mutableListOf<ViewModelInitializer<*>>()
 
     /**
@@ -38,6 +39,7 @@ public class InitializerViewModelFactoryBuilder {
 }
 
 /**
+ * 向InitializerViewModelFactoryBuilder中添加initializer
  * Add an initializer to the [InitializerViewModelFactoryBuilder]
  */
 inline fun <reified VM : ViewModel> InitializerViewModelFactoryBuilder.initializer(
@@ -48,6 +50,7 @@ inline fun <reified VM : ViewModel> InitializerViewModelFactoryBuilder.initializ
 
 /**
  * Holds a [ViewModel] class and initializer for that class
+ * 保存 [ViewModel] 类和该类的初始值设定项
  */
 class ViewModelInitializer<T : ViewModel>(
     internal val clazz: Class<T>,
@@ -55,6 +58,8 @@ class ViewModelInitializer<T : ViewModel>(
 )
 
 /**
+ * 一个 [ViewModelProvider.Factory]，允许您添加 lambda 初始值设定项以使用 [CreationExtras] 处理特定的 ViewModel 类，同时使用任何其他类的默认行为。
+ *
  * A [ViewModelProvider.Factory] that allows you to add lambda initializers for handling
  * particular ViewModel classes using [CreationExtras], while using the default behavior for any
  * other classes.

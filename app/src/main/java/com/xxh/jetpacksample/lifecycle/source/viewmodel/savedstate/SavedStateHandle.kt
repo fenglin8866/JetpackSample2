@@ -19,29 +19,37 @@ import java.io.Serializable
 
 
 /**
+ * 核心是对regular中数据的操作
+ *
  * A handle to saved state passed down to [androidx.lifecycle.ViewModel]. You should use
  * [SavedStateViewModelFactory] if you want to receive this object in `ViewModel`'s
  * constructor.
+ * 传递给 [androidx.lifecycle.ViewModel] 的已保存状态的处理。
+ * 如果要在“ViewModel”的构造函数中接收此对象，则应使用 [SavedStateViewModelFactory]。
  *
  * This is a key-value map that will let you write and retrieve objects to and from the saved state.
  * These values will persist after the process is killed by the system
  * and remain available via the same object.
+ * 这是一个键值映射，可用于在保存的状态中写入和检索对象。这些值将在进程被系统终止后保留，并通过同一对象保持可用。
  *
  * You can read a value from it via [get] or observe it via [androidx.lifecycle.LiveData] returned
  * by [getLiveData].
+ * 您可以通过 [get] 从中读取值，也可以通过 [getLiveData] 返回的 [androidx.lifecycle.LiveData] 观察它。
  *
  * You can write a value to it via [set] or setting a value to
  * [androidx.lifecycle.MutableLiveData] returned by [getLiveData].
+ * 您可以通过 [set] 或将值设置为 [getLiveData] 返回的 [androidx.lifecycle.MutableLiveData] 向其写入值。
  */
 class SavedStateHandle {
     private val regular = mutableMapOf<String, Any?>()
     private val savedStateProviders = mutableMapOf<String, SavedStateRegistry.SavedStateProvider>()
     private val liveDatas = mutableMapOf<String, SavingStateLiveData<*>>()
     private val flows = mutableMapOf<String, MutableStateFlow<Any?>>()
-    private val savedStateProvider =
-        SavedStateRegistry.SavedStateProvider {
+    //函数式接口实现方法
+    private val savedStateProvider = SavedStateRegistry.SavedStateProvider {
             // Get the saved state from each SavedStateProvider registered with this
             // SavedStateHandle, iterating through a copy to avoid re-entrance
+            //从向此 SavedStateHandle 注册的每个 SavedStateProvider 获取保存的状态，循环访问副本以避免重新进入
             val map = savedStateProviders.toMap()
             for ((key, value) in map) {
                 val savedState = value.saveState()
@@ -60,6 +68,7 @@ class SavedStateHandle {
 
     /**
      * Creates a handle with the given initial arguments.
+     * 使用给定的初始参数创建handle
      *
      * @param initialState initial arguments for the SavedStateHandle
      */
@@ -150,6 +159,9 @@ class SavedStateHandle {
         return getLiveDataInternal(key, true, initialValue)
     }
 
+    /**
+     * 返回LiveData对象，同时通过key-LiveData对象存入SavedStateHandle中的liveDatas
+     */
     private fun <T> getLiveDataInternal(
         key: String,
         hasInitialValue: Boolean,
@@ -356,6 +368,9 @@ class SavedStateHandle {
         savedStateProviders.remove(key)
     }
 
+    /**
+     * 定义与SavedStateHandle关联的LiveData
+     */
     internal class SavingStateLiveData<T> : MutableLiveData<T> {
         private var key: String
         private var handle: SavedStateHandle?
@@ -369,7 +384,7 @@ class SavedStateHandle {
             this.key = key
             this.handle = handle
         }
-
+        //通过key同步设置Handle中的regular和flows
         override fun setValue(value: T) {
             handle?.let {
                 it.regular[key] = value
@@ -419,6 +434,9 @@ class SavedStateHandle {
             return SavedStateHandle(state)
         }
 
+        /**
+         * 校验值
+         */
         @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
         fun validateValue(value: Any?): Boolean {
             if (value == null) {
