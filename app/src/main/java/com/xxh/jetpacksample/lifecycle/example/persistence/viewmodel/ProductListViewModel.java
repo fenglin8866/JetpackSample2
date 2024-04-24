@@ -52,7 +52,7 @@ public class ProductListViewModel extends AndroidViewModel {
         // allowing us to recalculate what LiveData to get from the DataRepository
         // based on what query the user has entered
         mProducts = Transformations.switchMap(
-                savedStateHandle.getLiveData("QUERY", null),
+                savedStateHandle.getLiveData(QUERY_KEY, null),
                 (Function1<CharSequence, LiveData<List<ProductEntity>>>) query -> {
                     if (TextUtils.isEmpty(query)) {
                         return mRepository.getProducts();

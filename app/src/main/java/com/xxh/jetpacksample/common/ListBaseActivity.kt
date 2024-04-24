@@ -1,21 +1,18 @@
 package com.xxh.jetpacksample.common
 
 import android.content.Intent
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.xxh.jetpacksample.databinding.ActivityMainBinding
 
 
-abstract class ListBaseActivity : AppCompatActivity() {
+abstract class ListBaseActivity : BaseActivity<ActivityMainBinding>() {
 
-    private lateinit var mBinding: ActivityMainBinding
+    override fun bindView(inflater: LayoutInflater): ActivityMainBinding {
+        return ActivityMainBinding.inflate(layoutInflater)
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        mBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(mBinding.root)
-
+    override fun initView() {
         val dataset = setData()
         val customAdapter = StringAdapter(dataset)
         customAdapter.setItemClickCallback {

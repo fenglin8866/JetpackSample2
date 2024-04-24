@@ -105,6 +105,9 @@
             android:name="com.xxh.jetpacksample.lifecycle.example.persistence.ui.PersistenceActivity"
             android:exported="false" />
 
+        <activity
+            android:name="com.xxh.jetpacksample.bindings.BindingTestActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

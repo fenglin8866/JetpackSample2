@@ -404,6 +404,7 @@ class SavedStateHandle {
         @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
         @JvmStatic
         @Suppress("DEPRECATION")
+        //restoredState是恢复的数据，如果没有恢复数据，使用defaultState设置默认数据。
         fun createHandle(restoredState: Bundle?, defaultState: Bundle?): SavedStateHandle {
             if (restoredState == null) {
                 return if (defaultState == null) {

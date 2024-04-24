@@ -15,8 +15,14 @@ import com.xxh.jetpacksample.lifecycle.source.viewmodel.ViewModelProvider
 import com.xxh.jetpacksample.lifecycle.source.viewmodel.ViewModelProvider.NewInstanceFactory.Companion.VIEW_MODEL_KEY
 import com.xxh.jetpacksample.lifecycle.source.viewmodel.ViewModelStoreOwner
 
-
+/**
+ * 存储SavedStateHandlesVM的ViewModel的Key
+ */
 private const val VIEWMODEL_KEY = "androidx.lifecycle.internal.SavedStateHandlesVM"
+
+/**
+ * 在SavedStateRegistry中存储SavedStateHandlesProvider的Key
+ */
 private const val SAVED_STATE_KEY = "androidx.lifecycle.internal.SavedStateHandlesProvider"
 
 /**
@@ -45,13 +51,22 @@ fun <T> T.enableSavedStateHandles()
     }
 }
 
+/**
+ * key是NewInstanceFactory中VIEW_MODEL_KEY，是SavedStateRegistry中存储Bundle的key。
+ */
 private fun createSavedStateHandle(
     savedStateRegistryOwner: SavedStateRegistryOwner,
     viewModelStoreOwner: ViewModelStoreOwner,
     key: String,
     defaultArgs: Bundle?
 ): SavedStateHandle {
+    //是SavedStateProvider接口实现，用于存储数据
     val provider = savedStateRegistryOwner.savedStateHandlesProvider
+    /**
+     * 用于缓存SavedStateHandle对象
+     * 什么使用viewModel而不直接使用集合？
+     * 如果是使用集合，在配置更改时，需要重新创建，不能跟外层ViewModel的生命周期保存一致，消耗性能。
+     */
     val viewModel = viewModelStoreOwner.savedStateHandlesVM
     // If we already have a reference to a previously created SavedStateHandle
     // for a given key stored in our ViewModel, use that. Otherwise, create
@@ -110,6 +125,7 @@ internal val SavedStateRegistryOwner.savedStateHandlesProvider: SavedStateHandle
         )
 
 internal class SavedStateHandlesVM : ViewModel() {
+    //必须有VIEW_MODEL_KEY
     val handles = mutableMapOf<String, SavedStateHandle>()
 }
 
