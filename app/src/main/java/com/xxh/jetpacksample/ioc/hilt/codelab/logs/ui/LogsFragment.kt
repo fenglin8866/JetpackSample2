@@ -26,7 +26,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.xxh.jetpacksample.ioc.hilt.codelab.logs.data.Log
 import com.xxh.jetpacksample.ioc.hilt.codelab.logs.util.DateFormatter
 import com.xxh.jetpacksample.R
-import com.xxh.jetpacksample.common.BaseFragment
+import com.xxh.common.BaseFragment
 import com.xxh.jetpacksample.databinding.FragmentLogsBinding
 import com.xxh.jetpacksample.ioc.hilt.codelab.logs.data.LoggerDataSource
 import com.xxh.jetpacksample.ioc.hilt.codelab.logs.di.InMemoryLogger
@@ -81,7 +81,7 @@ private class LogsViewAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LogsViewHolder {
         return LogsViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.text_row_item, parent, false) as TextView
+                .inflate(R.layout.text_row_item_1, parent, false) as TextView
         )
     }
 

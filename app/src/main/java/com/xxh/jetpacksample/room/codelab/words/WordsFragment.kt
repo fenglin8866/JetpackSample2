@@ -1,20 +1,16 @@
 package com.xxh.jetpacksample.room.codelab.words
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.xxh.jetpacksample.JApplication
 import com.xxh.jetpacksample.R
-import com.xxh.jetpacksample.common.BaseFragment
-import com.xxh.jetpacksample.databinding.FragmentNewWordBinding
+import com.xxh.common.BaseFragment
 import com.xxh.jetpacksample.databinding.FragmentWordsBinding
-import kotlinx.coroutines.launch
 
 class WordsFragment : BaseFragment<FragmentWordsBinding>() {
 

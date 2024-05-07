@@ -11,7 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.xxh.jetpacksample.JApplication
 import com.xxh.jetpacksample.R
-import com.xxh.jetpacksample.common.BaseFragment
+import com.xxh.common.BaseFragment
 import com.xxh.jetpacksample.databinding.FragmentNewWordBinding
 import com.xxh.jetpacksample.room.codelab.data.database.word.Word
 

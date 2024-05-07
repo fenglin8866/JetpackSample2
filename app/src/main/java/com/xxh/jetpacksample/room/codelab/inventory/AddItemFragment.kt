@@ -26,7 +26,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.xxh.jetpacksample.JApplication
-import com.xxh.jetpacksample.common.BaseFragment
+import com.xxh.common.BaseFragment
 import com.xxh.jetpacksample.databinding.FragmentAddItemBinding
 import com.xxh.jetpacksample.room.codelab.data.database.inventory.Item
 import kotlinx.coroutines.launch

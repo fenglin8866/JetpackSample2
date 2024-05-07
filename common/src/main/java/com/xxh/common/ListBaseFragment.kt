@@ -1,11 +1,11 @@
-package com.xxh.jetpacksample.common
+package com.xxh.common
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.xxh.jetpacksample.databinding.ContentListBinding
+import com.xxh.common.databinding.ContentListBinding
 
 
 abstract class ListBaseFragment : BaseFragment<ContentListBinding>() {

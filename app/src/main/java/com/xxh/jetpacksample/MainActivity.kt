@@ -1,11 +1,9 @@
 package com.xxh.jetpacksample
 
 import android.content.Intent
-import android.os.Bundle
-import android.os.PersistableBundle
 import com.example.android.architecture.blueprints.todoapp.tasks.TasksActivity
 import com.google.samples.apps.sunflower.GardenActivity
-import com.xxh.jetpacksample.common.ListBaseActivity
+import com.xxh.common.ListBaseActivity
 import com.xxh.jetpacksample.ioc.IocMainActivity
 import com.xxh.jetpacksample.lifecycle.LifecycleMainActivity
 import com.xxh.jetpacksample.navigation.NavigationMainActivity

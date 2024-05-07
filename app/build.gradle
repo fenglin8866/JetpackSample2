@@ -37,9 +37,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    /*viewBinding{
-        enable = true
-    }*/
+
     buildFeatures {
         compose true
         viewBinding true
@@ -62,6 +60,7 @@ kapt {
 dependencies {
     implementation project(':sunflower')
     implementation project(':todo')
+    implementation project(':common')
     implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
     implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
     implementation "androidx.activity:activity-ktx:$rootProject.activityVersion"

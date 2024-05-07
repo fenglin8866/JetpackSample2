@@ -26,7 +26,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.navigation.fragment.findNavController
 import com.xxh.jetpacksample.R
 import com.xxh.jetpacksample.ioc.hilt.codelab.login.registration.RegistrationViewModel
-import com.xxh.jetpacksample.common.BaseFragment
+import com.xxh.common.BaseFragment
 import com.xxh.jetpacksample.databinding.FragmentEnterDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

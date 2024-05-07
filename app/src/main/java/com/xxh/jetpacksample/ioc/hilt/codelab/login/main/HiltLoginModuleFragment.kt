@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.xxh.jetpacksample.R
-import com.xxh.jetpacksample.common.BaseFragment
+import com.xxh.common.BaseFragment
 import com.xxh.jetpacksample.databinding.FragmentHiltLoginModuleBinding
 import com.xxh.jetpacksample.ioc.hilt.codelab.login.user.UserManager
 import dagger.hilt.android.AndroidEntryPoint

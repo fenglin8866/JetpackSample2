@@ -3,7 +3,7 @@ package com.xxh.jetpacksample.room
 import androidx.annotation.IdRes
 import androidx.navigation.fragment.findNavController
 import com.xxh.jetpacksample.R
-import com.xxh.jetpacksample.common.ListBaseFragment
+import com.xxh.common.ListBaseFragment
 
 class RoomListFragment : ListBaseFragment(){
     override fun setData(): Array<String> = arrayOf(

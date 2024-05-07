@@ -1,7 +1,7 @@
 package com.xxh.jetpacksample.lifecycle
 
 import android.content.Intent
-import com.xxh.jetpacksample.common.ListBaseFragment
+import com.xxh.common.ListBaseFragment
 import com.xxh.jetpacksample.lifecycle.example.persistence.ui.PersistenceActivity
 import com.xxh.jetpacksample.lifecycle.example.test.LifecycleTestActivity
 

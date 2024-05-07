@@ -24,7 +24,7 @@ import androidx.lifecycle.coroutineScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.xxh.jetpacksample.JApplication
-import com.xxh.jetpacksample.common.BaseFragment
+import com.xxh.common.BaseFragment
 import com.xxh.jetpacksample.room.codelab.busschedule.viewmodels.BusScheduleViewModel
 import com.xxh.jetpacksample.room.codelab.busschedule.viewmodels.BusScheduleViewModelFactory
 import com.xxh.jetpacksample.databinding.StopScheduleFragmentBinding

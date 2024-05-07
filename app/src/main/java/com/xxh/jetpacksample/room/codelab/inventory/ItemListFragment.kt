@@ -26,7 +26,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.xxh.jetpacksample.JApplication
 import com.xxh.jetpacksample.R
-import com.xxh.jetpacksample.common.BaseFragment
+import com.xxh.common.BaseFragment
 import com.xxh.jetpacksample.databinding.ItemListFragmentBinding
 import kotlinx.coroutines.launch
 

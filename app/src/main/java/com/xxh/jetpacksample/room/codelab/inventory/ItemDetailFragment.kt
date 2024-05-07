@@ -27,7 +27,7 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.xxh.jetpacksample.JApplication
 import com.xxh.jetpacksample.R
-import com.xxh.jetpacksample.common.BaseFragment
+import com.xxh.common.BaseFragment
 import com.xxh.jetpacksample.databinding.FragmentItemDetailBinding
 import com.xxh.jetpacksample.room.codelab.data.database.inventory.Item
 import kotlinx.coroutines.launch

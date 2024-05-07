@@ -22,7 +22,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.xxh.jetpacksample.R
-import com.xxh.jetpacksample.common.BaseFragment
+import com.xxh.common.BaseFragment
 import com.xxh.jetpacksample.databinding.FragmentButtonsBinding
 import com.xxh.jetpacksample.ioc.hilt.codelab.logs.data.LoggerDataSource
 import com.xxh.jetpacksample.ioc.hilt.codelab.logs.di.InMemoryLogger

@@ -3,7 +3,7 @@ package com.xxh.jetpacksample.lifecycle.example.test
 import android.util.Log
 import android.view.LayoutInflater
 import androidx.activity.viewModels
-import com.xxh.jetpacksample.common.BaseActivity
+import com.xxh.common.BaseActivity
 import com.xxh.jetpacksample.databinding.ActivityLifecycleTestBinding
 
 class LifecycleTestActivity : BaseActivity<ActivityLifecycleTestBinding>() {

@@ -1,15 +1,15 @@
-package com.xxh.jetpacksample.common
+package com.xxh.common
 
 import android.content.Intent
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.xxh.jetpacksample.databinding.ActivityMainBinding
+import com.xxh.common.databinding.ContentListBinding
 
 
-abstract class ListBaseActivity : BaseActivity<ActivityMainBinding>() {
+abstract class ListBaseActivity : BaseActivity<ContentListBinding>() {
 
-    override fun bindView(inflater: LayoutInflater): ActivityMainBinding {
-        return ActivityMainBinding.inflate(layoutInflater)
+    override fun bindView(inflater: LayoutInflater): ContentListBinding {
+        return ContentListBinding.inflate(layoutInflater)
     }
 
     override fun initView() {

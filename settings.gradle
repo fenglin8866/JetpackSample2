@@ -17,3 +17,5 @@ rootProject.name = "JetpackSample2"
 include ':app'
 include ':sunflower'
 include ':todo'
+include ':ui'
+include ':common'

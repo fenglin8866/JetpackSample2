@@ -1,4 +1,4 @@
-package com.xxh.jetpacksample.common
+package com.xxh.common
 
 import android.os.Bundle
 import android.view.LayoutInflater

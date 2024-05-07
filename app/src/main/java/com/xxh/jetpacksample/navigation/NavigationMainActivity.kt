@@ -1,12 +1,7 @@
 package com.xxh.jetpacksample.navigation
 
 import android.content.Intent
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.xxh.jetpacksample.common.ListBaseActivity
-import com.xxh.jetpacksample.common.StringAdapter
-import com.xxh.jetpacksample.databinding.ActivityMainBinding
+import com.xxh.common.ListBaseActivity
 import com.xxh.jetpacksample.navigation.codelab.navigation.NavigationCodelabMainActivity
 import com.xxh.jetpacksample.navigation.codelab.wordsapp.WordMainActivity
 import com.xxh.jetpacksample.navigation.example.donuttracker.NavigationMADSMainActivity

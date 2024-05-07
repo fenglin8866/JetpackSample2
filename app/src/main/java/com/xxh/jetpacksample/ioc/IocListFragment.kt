@@ -3,7 +3,7 @@ package com.xxh.jetpacksample.ioc
 import androidx.annotation.IdRes
 import androidx.navigation.fragment.findNavController
 import com.xxh.jetpacksample.R
-import com.xxh.jetpacksample.common.ListBaseFragment
+import com.xxh.common.ListBaseFragment
 
 class IocListFragment : ListBaseFragment() {
     override fun setData(): Array<String> = arrayOf(
