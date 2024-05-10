@@ -22,7 +22,8 @@
 
     <style name="Theme.Sample" parent="Theme.Base" />
 
-    <style name="AppTheme" parent="Theme.Sample" />
+    <style name="AppThemeUI1" parent="Theme.Sample" />
+    <style name="AppThemeUI" parent="Theme.AppCompat.Light" />
     <!-- Widget styling -->
 
     <style name="Widget" />

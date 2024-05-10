@@ -13,7 +13,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-package com.xxh.learn.ui.layout.recyclerview.recyclersample.logger.recyclerview
+package com.xxh.learn.ui.layout.swiperefresh
 
 import android.os.Bundle
 import android.view.Menu
@@ -30,30 +30,33 @@ import com.xxh.learn.ui.layout.common.logger.MessageOnlyLogFilter
 
 /**
  * A simple launcher activity containing a summary sample description, sample log and a custom
- * [Fragment] which can display a view.
+ * [android.support.v4.app.Fragment] which can display a view.
  *
  *
  * For devices with displays with a width of 720dp or greater, the sample log is always visible,
  * on other devices it's visibility is controlled by an item on the Action Bar.
  */
-class LoggerActivity : SampleActivityBase() {
+class SwipeRefreshActivity : SampleActivityBase() {
     // Whether the Log Fragment is currently shown
     private var mLogShown = false
 
-    protected override fun onCreate(savedInstanceState: Bundle?) {
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_logger)
 
         if (savedInstanceState == null) {
             val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-            val fragment = RecyclerViewFragment()
+//            val fragment = SwipeRefreshLayoutBasicFragment()
+            val fragment = SwipeRefreshMultipleViewsFragment()
             transaction.replace(R.id.sample_content_fragment, fragment)
             transaction.commit()
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        getMenuInflater().inflate(R.menu.main, menu)
+        menuInflater.inflate(R.menu.main, menu)
         return true
     }
 

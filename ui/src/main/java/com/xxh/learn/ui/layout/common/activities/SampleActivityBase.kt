@@ -1,10 +1,10 @@
-package com.xxh.learn.ui.layout.recyclerview.recyclersample.logger.common.activities
+package com.xxh.learn.ui.layout.common.activities
 
 import androidx.appcompat.app.AppCompatActivity
-import com.xxh.learn.ui.layout.recyclerview.recyclersample.logger.common.logger.Log
-import com.xxh.learn.ui.layout.recyclerview.recyclersample.logger.common.logger.LogWrapper
+import com.xxh.learn.ui.layout.common.logger.Log
+import com.xxh.learn.ui.layout.common.logger.LogWrapper
 
-open class BaseLoggerActivity : AppCompatActivity() {
+open class SampleActivityBase : AppCompatActivity() {
     val TAG: String = "BaseLoggerActivity"
     override fun onStart() {
         super.onStart()

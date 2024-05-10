@@ -99,6 +99,11 @@
 
         <activity
             android:name=".layout.recyclerview.recyclersample.logger.recyclerview.LoggerActivity"
+            android:theme="@style/AppThemeUI"
+            android:exported="false" />
+        <activity
+            android:name=".layout.swiperefresh.SwipeRefreshActivity"
+            android:theme="@style/AppThemeUI"
             android:exported="false" />
     </application>
 

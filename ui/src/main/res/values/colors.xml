@@ -39,4 +39,9 @@
     <color name="purple_500">#6200EE</color>
     <color name="teal_200">#03DAC5</color>
     <color name="teal_300">#4DB6AC</color>
+
+    <color name="swipe_color_1">#B6DB49</color>
+    <color name="swipe_color_2">#99CC00</color>
+    <color name="swipe_color_3">#8ABD00</color>
+    <color name="swipe_color_4">#7CAF00</color>
 </resources>

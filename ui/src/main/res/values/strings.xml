@@ -82,4 +82,9 @@
     <string name="element_text">Element</string>
     <string name="grid_layout_manager">Grid Layout Manager</string>
     <string name="linear_layout_manager">Linear Layout Manager</string>
+
+    <string name="menu_refresh">Refresh</string>
+    <string name="menu_clear">Clear items</string>
+    <string name="empty_text">List is empty! Swipe down to refresh.</string>
+
 </resources>

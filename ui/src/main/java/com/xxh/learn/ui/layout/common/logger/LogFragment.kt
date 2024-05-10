@@ -28,7 +28,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.xxh.learn.ui.layout.recyclerview.recyclersample.logger.common.logger
+package com.xxh.learn.ui.layout.common.logger
 
 import android.graphics.Typeface
 import android.os.Bundle
@@ -40,7 +40,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ScrollView
 import androidx.fragment.app.Fragment
-import com.xxh.learn.ui.R
 
 /**
  * Simple fraggment which contains a LogView and uses is to output log data it receives
@@ -75,8 +74,7 @@ class LogFragment : Fragment() {
         logView!!.compoundDrawablePadding = paddingPixels
 
         logView!!.gravity = Gravity.BOTTOM
-        //logView!!.setTextAppearance(getActivity(), R.style.TextAppearance_Holo_Medium)
-
+        logView!!.setTextAppearance(activity, android.R.style.TextAppearance_Holo_Medium)
         mScrollView.addView(logView)
         return mScrollView
     }

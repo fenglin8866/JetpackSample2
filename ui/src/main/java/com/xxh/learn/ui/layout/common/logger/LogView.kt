@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.xxh.learn.ui.layout.recyclerview.recyclersample.logger.common.logger
+package com.xxh.learn.ui.layout.common.logger
 
 import android.app.Activity
 import android.content.Context
@@ -113,9 +113,9 @@ class LogView : TextView, LogNode {
     fun appendToLog(s: String) {
         append(
             """
-    
-    $s
-    """.trimIndent()
+
+            $s
+            """.trimIndent()
         )
     }
 }
