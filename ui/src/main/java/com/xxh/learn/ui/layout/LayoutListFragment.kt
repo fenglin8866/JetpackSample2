@@ -10,7 +10,8 @@ class LayoutListFragment : ListBaseFragment() {
         "RecyclerView",
         "SwipeRefreshLayout",
         "ConstraintLayout",
-        "ViewPager2"
+        "ViewPager2",
+        "CardView"
     )
 
     override fun itemClickHandle(name: String) {
@@ -20,6 +21,7 @@ class LayoutListFragment : ListBaseFragment() {
             "ConstraintLayout" -> R.id.action_layoutListFragment_to_constraintLayoutFragment
             "ViewPager2" -> R.id.action_layoutListFragment_to_browseActivity
             "SwipeRefreshLayout" -> R.id.action_layoutListFragment_to_swipeRefreshActivity
+            "CardView" -> R.id.action_layoutListFragment_to_cardViewFragment
             else -> null
         }
         resId?.let {
