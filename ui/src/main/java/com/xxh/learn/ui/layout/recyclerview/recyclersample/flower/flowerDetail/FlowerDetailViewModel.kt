@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package com.xxh.learn.ui.layout.recyclerview.recyclersample.flowerDetail
+package com.xxh.learn.ui.layout.recyclerview.recyclersample.flower.flowerDetail
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.xxh.learn.ui.layout.recyclerview.recyclersample.data.DataSource
-import com.xxh.learn.ui.layout.recyclerview.recyclersample.data.Flower
+import com.xxh.learn.ui.layout.recyclerview.recyclersample.flower.data.DataSource
+import com.xxh.learn.ui.layout.recyclerview.recyclersample.flower.data.Flower
 
 class FlowerDetailViewModel(private val datasource: DataSource) : ViewModel() {
 

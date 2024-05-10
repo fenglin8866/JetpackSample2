@@ -12,7 +12,8 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.xxh.common.BaseFragment
 import com.xxh.learn.ui.databinding.FragmentRecyclerViewBinding
-import com.xxh.learn.ui.layout.recyclerview.recyclersample.flowerList.FlowersListActivity
+import com.xxh.learn.ui.layout.recyclerview.recyclersample.flower.flowerList.FlowersListActivity
+import com.xxh.learn.ui.layout.recyclerview.recyclersample.logger.recyclerview.LoggerActivity
 
 class RecyclerViewFragment : BaseFragment<FragmentRecyclerViewBinding>() {
     private lateinit var demoCollectionAdapter: DemoCollectionAdapter
@@ -30,6 +31,10 @@ class RecyclerViewFragment : BaseFragment<FragmentRecyclerViewBinding>() {
         mBinding.flowerSample.setOnClickListener {
             startActivity(Intent(requireContext(), FlowersListActivity::class.java))
         }
+        mBinding.loggerSample.setOnClickListener {
+            startActivity(Intent(requireContext(), LoggerActivity::class.java))
+        }
+
         demoCollectionAdapter = DemoCollectionAdapter(this)
         viewPager = mBinding.pager;
         viewPager.adapter = demoCollectionAdapter

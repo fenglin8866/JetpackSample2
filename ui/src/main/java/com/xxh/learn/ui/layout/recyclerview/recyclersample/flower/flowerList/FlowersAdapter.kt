@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xxh.learn.ui.layout.recyclerview.recyclersample.flowerList
+package com.xxh.learn.ui.layout.recyclerview.recyclersample.flower.flowerList
 
 import android.view.LayoutInflater
 import android.view.View
@@ -25,7 +25,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.xxh.learn.ui.R
-import com.xxh.learn.ui.layout.recyclerview.recyclersample.data.Flower
+import com.xxh.learn.ui.layout.recyclerview.recyclersample.flower.data.Flower
 
 class FlowersAdapter(private val onClick: (Flower) -> Unit) :
     ListAdapter<Flower, FlowersAdapter.FlowerViewHolder>(FlowerDiffCallback) {

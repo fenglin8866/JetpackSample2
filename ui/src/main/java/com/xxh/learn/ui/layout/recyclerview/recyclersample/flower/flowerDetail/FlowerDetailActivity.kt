@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xxh.learn.ui.layout.recyclerview.recyclersample.flowerDetail
+package com.xxh.learn.ui.layout.recyclerview.recyclersample.flower.flowerDetail
 
 import android.os.Bundle
 import android.widget.Button
@@ -22,7 +22,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.xxh.learn.ui.layout.recyclerview.recyclersample.flowerList.FLOWER_ID
+import com.xxh.learn.ui.layout.recyclerview.recyclersample.flower.flowerList.FLOWER_ID
 import com.xxh.learn.ui.R
 
 class FlowerDetailActivity : AppCompatActivity() {

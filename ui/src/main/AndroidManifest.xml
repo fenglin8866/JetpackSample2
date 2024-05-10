@@ -88,13 +88,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".layout.recyclerview.recyclersample.flowerList.FlowersListActivity"
+            android:name=".layout.recyclerview.recyclersample.flower.flowerList.FlowersListActivity"
             android:exported="false" />
         <activity
-            android:name=".layout.recyclerview.recyclersample.flowerDetail.FlowerDetailActivity"
+            android:name=".layout.recyclerview.recyclersample.flower.flowerDetail.FlowerDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".layout.recyclerview.recyclersample.addFlower.AddFlowerActivity"
+            android:name=".layout.recyclerview.recyclersample.flower.addFlower.AddFlowerActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".layout.recyclerview.recyclersample.logger.recyclerview.LoggerActivity"
             android:exported="false" />
     </application>
 

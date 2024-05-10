@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xxh.learn.ui.layout.recyclerview.recyclersample.flowerList
+package com.xxh.learn.ui.layout.recyclerview.recyclersample.flower.flowerList
 
 import android.view.LayoutInflater
 import android.view.View

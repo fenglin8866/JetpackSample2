@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xxh.learn.ui.layout.recyclerview.recyclersample.flowerList
+package com.xxh.learn.ui.layout.recyclerview.recyclersample.flower.flowerList
 
 import android.app.Activity
 import android.content.Intent
@@ -24,12 +24,12 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.xxh.learn.ui.layout.recyclerview.recyclersample.addFlower.AddFlowerActivity
-import com.xxh.learn.ui.layout.recyclerview.recyclersample.flowerDetail.FlowerDetailActivity
+import com.xxh.learn.ui.layout.recyclerview.recyclersample.flower.addFlower.AddFlowerActivity
+import com.xxh.learn.ui.layout.recyclerview.recyclersample.flower.flowerDetail.FlowerDetailActivity
 import com.xxh.learn.ui.R
-import com.xxh.learn.ui.layout.recyclerview.recyclersample.addFlower.FLOWER_DESCRIPTION
-import com.xxh.learn.ui.layout.recyclerview.recyclersample.addFlower.FLOWER_NAME
-import com.xxh.learn.ui.layout.recyclerview.recyclersample.data.Flower
+import com.xxh.learn.ui.layout.recyclerview.recyclersample.flower.addFlower.FLOWER_DESCRIPTION
+import com.xxh.learn.ui.layout.recyclerview.recyclersample.flower.addFlower.FLOWER_NAME
+import com.xxh.learn.ui.layout.recyclerview.recyclersample.flower.data.Flower
 
 const val FLOWER_ID = "flower id"
 

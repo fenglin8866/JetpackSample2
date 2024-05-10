@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xxh.learn.ui.layout.recyclerview.recyclersample.data
+package com.xxh.learn.ui.layout.recyclerview.recyclersample.flower.data
 
 import android.content.res.Resources
 import androidx.lifecycle.LiveData

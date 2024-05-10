@@ -78,4 +78,8 @@
     <string name="flower_image_content_description">Image of flower</string>
     <string name="remove_this_flower">Remove this flower</string>
 
+    <string name="logger_sample">LoggerSample</string>
+    <string name="element_text">Element</string>
+    <string name="grid_layout_manager">Grid Layout Manager</string>
+    <string name="linear_layout_manager">Linear Layout Manager</string>
 </resources>

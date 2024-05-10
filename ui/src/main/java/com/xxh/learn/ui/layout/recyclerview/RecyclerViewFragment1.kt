@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.xxh.common.BaseFragment
 import com.xxh.learn.ui.databinding.FragmentRecyclerView1Binding
 import com.xxh.learn.ui.layout.data.News
-import com.xxh.learn.ui.layout.recyclerview.NewsAdapter
 
 class RecyclerViewFragment1 : BaseFragment<FragmentRecyclerView1Binding>() {
     override fun bindView(
