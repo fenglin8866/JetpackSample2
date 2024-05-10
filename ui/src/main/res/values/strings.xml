@@ -1,1 +1,81 @@
-<resources></resources>
+<resources>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="affirmation1">I am strong.</string>
+    <string name="affirmation2">I believe in myself.</string>
+    <string name="affirmation3">Each day is a new opportunity to grow and be a better version of myself.</string>
+    <string name="affirmation4">Every challenge in my life is an opportunity to learn from.</string>
+    <string name="affirmation5">I have so much to be grateful for.</string>
+    <string name="affirmation6">Good things are always coming into my life.</string>
+    <string name="affirmation7">New opportunities await me at every turn.</string>
+    <string name="affirmation8">I have the courage to follow my heart.</string>
+    <string name="affirmation9">Things will unfold at precisely the right time.</string>
+    <string name="affirmation10">I will be present in all the moments that this day brings.</string>
+
+    <string name="activity_sample_code">ViewPager2 Demos</string>
+    <string name="label_orientation">Orientation:</string>
+    <string name="label_jump_to">Jump to:</string>
+    <string name="label_jump">Jump</string>
+    <string name="disable_user_input">Disable user input</string>
+    <string name="checkbox_smoothscroll">Smooth</string>
+    <string name="checkbox_rotate">Rotate</string>
+    <string name="checkbox_translate">Translate</string>
+    <string name="checkbox_scale">Scale</string>
+    <string name="increase_count">Count++</string>
+    <string name="count_colon">Count:</string>
+    <string name="id_colon">Id:</string>
+    <string name="add_new_before">Add new before</string>
+    <string name="add_new_after">Add new after</string>
+    <string name="remove_page">Remove page</string>
+    <string name="go_to_page">Go to page</string>
+    <string name="use_diff_util">Use DiffUtil:</string>
+    <string name="choose_a_page">Choose a page:</string>
+    <string name="toolbox">Toolbox</string>
+    <string name="viewpager2">ViewPager2</string>
+    <string name="first_rv">Horizontal RecyclerView</string>
+    <string name="second_rv">Vertical RecyclerView</string>
+    <string name="page_position">Page %1$d</string>
+    <string name="item_position">Item %1$d</string>
+
+
+    <string name="flower_sample">FlowerSample</string>
+    <string name="add_flower">Add Flower</string>
+    <string name="flower1_name">Rose</string>
+    <string name="flower2_name">Freesia</string>
+    <string name="flower3_name">Lily</string>
+    <string name="flower4_name">Sunflower</string>
+    <string name="flower5_name">Peony</string>
+    <string name="flower6_name">Daisy</string>
+    <string name="flower7_name">Lilac</string>
+    <string name="flower8_name">Marigold</string>
+    <string name="flower9_name">Poppy</string>
+    <string name="flower10_name">Daffodil</string>
+    <string name="flower11_name">Dahlia</string>
+    <string name="flower12_name">Tulip</string>
+    <string name="flower1_description">Rose comes from the Latin word Rosa. There are over 100
+        species of the rose. </string>
+    <string name="flower2_description">Freesias bloom during spring and are native to
+        Africa.</string>
+    <string name="flower3_description">Lilies have the longest in vase lifespan of any cut
+        bloom.</string>
+    <string name="flower4_description">Mature Sunflowers face east and are native too the United
+        States.</string>
+    <string name="flower5_description">Peony plants can live to be 100 years old.</string>
+    <string name="flower6_description">Daisies are cousins with Sunflowers.</string>
+    <string name="flower7_description">Lilacs belong to the olive family.</string>
+    <string name="flower8_description">Marigolds come in orange, reed, maroon and yellow.</string>
+    <string name="flower9_description">Poppies can be over 3 feet tall.</string>
+    <string name="flower10_description">Daffodils are referred to as Lent Lilies in England</string>
+    <string name="flower11_description">Dahlia is named after the Swedish botanist Anders
+        Dahl</string>
+    <string name="flower12_description">There are over 150 species of tulips.</string>
+
+    <string name="flower_string">Flowers</string>
+    <string name="flower_finder">Flower finder</string>
+    <string name="flower_description_edit_text">Flower Description</string>
+    <string name="flower_name_edit_text">Flower Name</string>
+    <string name="done_button_text">Done</string>
+    <string name="fab_content_description">fab</string>
+    <string name="flower_image_content_description">Image of flower</string>
+    <string name="remove_this_flower">Remove this flower</string>
+
+</resources>

@@ -8,6 +8,7 @@ import com.xxh.jetpacksample.ioc.IocMainActivity
 import com.xxh.jetpacksample.lifecycle.LifecycleMainActivity
 import com.xxh.jetpacksample.navigation.NavigationMainActivity
 import com.xxh.jetpacksample.room.RoomMainActivity
+import com.xxh.learn.ui.UIMainActivity
 
 class MainActivity : ListBaseActivity() {
 
@@ -17,7 +18,8 @@ class MainActivity : ListBaseActivity() {
         "Room",
         "Navigation",
         "SunFlower",
-        "Todo"
+        "Todo",
+        "UI"
     )
 
     override fun setClickIntent(name: String): Intent? = when (name) {
@@ -27,6 +29,7 @@ class MainActivity : ListBaseActivity() {
         "Navigation" -> Intent(this, NavigationMainActivity::class.java)
         "SunFlower" -> Intent(this, GardenActivity::class.java)
         "Todo" -> Intent(this, TasksActivity::class.java)
+        "UI" -> Intent(this, UIMainActivity::class.java)
         else -> null
     }
 }

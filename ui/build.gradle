@@ -36,13 +36,28 @@ android {
 }
 
 dependencies {
-
+    implementation project(':common')
     implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
     implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
     implementation "androidx.fragment:fragment-ktx:$rootProject.fragmentVersion"
     implementation "com.google.android.material:material:$rootProject.materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
     implementation "androidx.activity:activity-ktx:$rootProject.activityVersion"
+    //Navigation组件
+    // Kotlin
+    implementation("androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion")
+    // Feature module Support
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:$rootProject.navigationVersion")
+    // Testing Navigation
+    androidTestImplementation("androidx.navigation:navigation-testing:$rootProject.navigationVersion")
+    // Jetpack Compose Integration
+    implementation("androidx.navigation:navigation-compose:$rootProject.navigationVersion")
+
+    // Kotlin components
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
+    implementation 'androidx.recyclerview:recyclerview:1.3.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

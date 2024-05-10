@@ -3,7 +3,98 @@
 
     <application>
         <activity
+            android:name=".layout.LayoutActivity"
+            android:exported="false" />
+        <activity
             android:name=".UIMainActivity"
+            android:exported="false" />
+        <activity android:name=".layout.viewpager2.CardViewActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".layout.viewpager2.CardFragmentActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".layout.viewpager2.MutableCollectionFragmentActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".layout.viewpager2.MutableCollectionViewActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".layout.viewpager2.CardViewTabLayoutActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".layout.viewpager2.FakeDragActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".layout.viewpager2.PageTransformerActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".layout.viewpager2.PreviewPagesActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".layout.viewpager2.ParallelNestedScrollingActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".layout.viewpager2.BrowseActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".layout.recyclerview.recyclersample.flowerList.FlowersListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".layout.recyclerview.recyclersample.flowerDetail.FlowerDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".layout.recyclerview.recyclersample.addFlower.AddFlowerActivity"
             android:exported="false" />
     </application>
 

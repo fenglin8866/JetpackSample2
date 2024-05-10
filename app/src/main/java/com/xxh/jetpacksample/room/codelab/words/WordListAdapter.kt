@@ -39,7 +39,7 @@ class WordListAdapter : ListAdapter<Word, WordViewHolder>(WORDS_COMPARATOR) {
     }
 
     class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val wordItemView: TextView = itemView.findViewById(R.id.textView)
+        private val wordItemView: TextView = itemView.findViewById(R.id.title)
 
         fun bind(text: String?) {
             wordItemView.text = text

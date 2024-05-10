@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_lifecycle"
+    app:startDestination="@id/layoutListFragment">
+
+
+    <fragment
+        android:id="@+id/layoutListFragment"
+        android:name="com.xxh.learn.ui.layout.LayoutListFragment"
+        android:label="LayoutListFragment"
+        tools:layout="@layout/content_list" >
+        <action
+            android:id="@+id/action_lifecycleListFragment_to_recyclerViewFragment"
+            app:destination="@id/recyclerViewFragment" />
+        <action
+            android:id="@+id/action_layoutListFragment_to_constraintLayoutFragment"
+            app:destination="@id/constraintLayoutFragment" />
+        <action
+            android:id="@+id/action_layoutListFragment_to_browseActivity"
+            app:destination="@id/browseActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/recyclerViewFragment"
+        android:name="com.xxh.learn.ui.layout.recyclerview.RecyclerViewFragment"
+        android:label="fragment_recycler_view"
+        tools:layout="@layout/fragment_recycler_view" />
+    <fragment
+        android:id="@+id/constraintLayoutFragment"
+        android:name="com.xxh.learn.ui.layout.constraintlayout.ConstraintLayoutFragment"
+        android:label="fragment_constraint_layout"
+        tools:layout="@layout/fragment_constraint_layout" />
+    <activity
+        android:id="@+id/browseActivity"
+        android:name="com.xxh.learn.ui.layout.viewpager2.BrowseActivity"
+        android:label="BrowseActivity" />
+</navigation>
