@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewConfiguration
 import android.widget.AbsListView
 import android.widget.ListView
+import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.xxh.learn.ui.R
 
@@ -20,7 +21,7 @@ import com.xxh.learn.ui.R
 class RefreshLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
     SwipeRefreshLayout(
         context, attrs
-    ), AbsListView.OnScrollListener {
+    ) {
     /**
      * 滑动到最下面时的上拉操作
      */
@@ -30,6 +31,7 @@ class RefreshLayout @JvmOverloads constructor(context: Context, attrs: Attribute
      * listview实例
      */
     private var mListView: ListView? = null
+    private var mRecyclerView: RecyclerView? = null
 
     /**
      * 上拉监听器, 到了最底部的上拉加载操作
@@ -62,7 +64,7 @@ class RefreshLayout @JvmOverloads constructor(context: Context, attrs: Attribute
         super.onLayout(changed, left, top, right, bottom)
 
         // 初始化ListView对象
-        if (mListView == null) {
+        if (mListView == null || mRecyclerView == null) {
             getListView()
         }
     }
@@ -73,12 +75,68 @@ class RefreshLayout @JvmOverloads constructor(context: Context, attrs: Attribute
     private fun getListView() {
         val children = childCount
         if (children > 0) {
-            val childView = getChildAt(0)
-            if (childView is ListView) {
-                mListView = childView
-                // 设置滚动监听器给ListView, 使得滚动的情况下也可以自动加载
-                mListView!!.setOnScrollListener(this)
-                Log.d(VIEW_LOG_TAG, "### 找到listview")
+            when (val childView = getChildAt(0)) {
+                is ListView -> {
+                    mListView = childView
+                    // 设置滚动监听器给ListView, 使得滚动的情况下也可以自动加载
+                    mListView?.setOnScrollListener(object : AbsListView.OnScrollListener {
+                        /**
+                         * ListView的滚动监听
+                         * 在滚动列表视图或网格视图时调用的回调方法。如果正在滚动视图，则在呈现滚动的下一帧之前将调用此方法。
+                         * 特别是，它将在调用 {@link AdaptergetView（int， View， ViewGroup）} 之前调用。
+                         * 一次滚动回调两次（开始和结束），onScroll在onScrollStateChanged之间
+                         * scrollState 当前滚动状态。{@link SCROLL_STATE_TOUCH_SCROLL} 或 {@link SCROLL_STATE_IDLE} 之一。
+                         */
+                        override fun onScrollStateChanged(view: AbsListView?, scrollState: Int) {
+                            // 移动过程中判断时候能下拉加载更多
+                            if (canLoad()) {
+                                // 加载数据
+                                loadData();
+                            }
+                            Log.d(
+                                "xxh0511",
+                                "onScrollStateChanged view=$view scrollState=$scrollState"
+                            )
+                        }
+
+                        /**
+                         * ListView的滚动监听
+                         * 滚动列表或网格时要调用的回调方法。这将在滚动完成后调用
+                         * 回调比较频繁
+                         * 第一个可见单元格的索引（如果 visibleItemCount == 0，则忽略）
+                         */
+                        override fun onScroll(
+                            view: AbsListView, firstVisibleItem: Int, visibleItemCount: Int,
+                            totalItemCount: Int
+                        ) {
+                            /*// 滚动时到了最底部也可以加载更多
+                            if (canLoad()) {
+                                loadData()
+                            }*/
+                            Log.d(
+                                "xxh0511",
+                                "onScroll view=$view firstVisibleItem=$firstVisibleItem visibleItemCount=${visibleItemCount} totalItemCount=${totalItemCount}"
+                            )
+                        }
+
+                    })
+                    Log.d(VIEW_LOG_TAG, "### 找到listview")
+                }
+
+                is RecyclerView -> {
+                    mRecyclerView = childView
+                    mRecyclerView?.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                        override fun onScrollStateChanged(
+                            recyclerView: RecyclerView,
+                            newState: Int
+                        ) {
+                            if (canLoad()) {
+                                // 加载数据
+                                loadData();
+                            }
+                        }
+                    })
+                }
             }
         }
     }
@@ -121,6 +179,7 @@ class RefreshLayout @JvmOverloads constructor(context: Context, attrs: Attribute
                     loadData();
                 }*/
             }
+
             MotionEvent.ACTION_UP -> {  // 抬起
                 mLastY = event.rawY.toInt()
                 //移动过程中判断时候能下拉加载更多
@@ -191,42 +250,6 @@ class RefreshLayout @JvmOverloads constructor(context: Context, attrs: Attribute
      */
     fun setOnLoadListener(loadListener: OnLoadListener?) {
         mOnLoadListener = loadListener
-    }
-
-    /**
-     * ListView的滚动监听
-     * 在滚动列表视图或网格视图时调用的回调方法。如果正在滚动视图，则在呈现滚动的下一帧之前将调用此方法。
-     * 特别是，它将在调用 {@link AdaptergetView（int， View， ViewGroup）} 之前调用。
-     * 一次滚动回调两次（开始和结束），onScroll在onScrollStateChanged之间
-     * scrollState 当前滚动状态。{@link SCROLL_STATE_TOUCH_SCROLL} 或 {@link SCROLL_STATE_IDLE} 之一。
-     */
-    override fun onScrollStateChanged(view: AbsListView, scrollState: Int) {
-        // 移动过程中判断时候能下拉加载更多
-        if (canLoad()) {
-            // 加载数据
-            loadData();
-        }
-        Log.d("xxh0511", "onScrollStateChanged view=$view scrollState=$scrollState")
-    }
-
-    /**
-     * ListView的滚动监听
-     * 滚动列表或网格时要调用的回调方法。这将在滚动完成后调用
-     * 回调比较频繁
-     * 第一个可见单元格的索引（如果 visibleItemCount == 0，则忽略）
-     */
-    override fun onScroll(
-        view: AbsListView, firstVisibleItem: Int, visibleItemCount: Int,
-        totalItemCount: Int
-    ) {
-        /*// 滚动时到了最底部也可以加载更多
-        if (canLoad()) {
-            loadData()
-        }*/
-        Log.d(
-            "xxh0511",
-            "onScroll view=$view firstVisibleItem=$firstVisibleItem visibleItemCount=${visibleItemCount} totalItemCount=${totalItemCount}"
-        )
     }
 
     /**
