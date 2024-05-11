@@ -21,8 +21,8 @@
             android:id="@+id/action_layoutListFragment_to_browseActivity"
             app:destination="@id/browseActivity" />
         <action
-            android:id="@+id/action_layoutListFragment_to_swipeRefreshActivity"
-            app:destination="@id/swipeRefreshActivity" />
+            android:id="@+id/action_layoutListFragment_to_swipeRefreshListActivity"
+            app:destination="@id/swipeRefreshListActivity" />
         <action
             android:id="@+id/action_layoutListFragment_to_cardViewFragment"
             app:destination="@id/cardViewFragment" />
@@ -42,8 +42,8 @@
         android:name="com.xxh.learn.ui.layout.viewpager2.BrowseActivity"
         android:label="BrowseActivity" />
     <activity
-        android:id="@+id/swipeRefreshActivity"
-        android:name="com.xxh.learn.ui.layout.swiperefresh.SwipeRefreshActivity"
+        android:id="@+id/swipeRefreshListActivity"
+        android:name="com.xxh.learn.ui.layout.swiperefresh.SwipeRefreshListActivity"
         android:label="SwipeRefreshActivity" />
     <fragment
         android:id="@+id/cardViewFragment"

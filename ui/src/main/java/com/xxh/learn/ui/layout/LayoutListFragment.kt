@@ -20,7 +20,7 @@ class LayoutListFragment : ListBaseFragment() {
             "RecyclerView" -> R.id.action_lifecycleListFragment_to_recyclerViewFragment
             "ConstraintLayout" -> R.id.action_layoutListFragment_to_constraintLayoutFragment
             "ViewPager2" -> R.id.action_layoutListFragment_to_browseActivity
-            "SwipeRefreshLayout" -> R.id.action_layoutListFragment_to_swipeRefreshActivity
+            "SwipeRefreshLayout" -> R.id.action_layoutListFragment_to_swipeRefreshListActivity
             "CardView" -> R.id.action_layoutListFragment_to_cardViewFragment
             else -> null
         }

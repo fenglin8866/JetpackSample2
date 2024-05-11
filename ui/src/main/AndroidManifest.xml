@@ -105,6 +105,13 @@
             android:name=".layout.swiperefresh.SwipeRefreshActivity"
             android:theme="@style/AppThemeUI"
             android:exported="false" />
+
+        <activity
+            android:name=".layout.swiperefresh.loaddata.LoadingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".layout.swiperefresh.SwipeRefreshListActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
