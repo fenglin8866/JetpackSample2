@@ -110,6 +110,9 @@
             android:name=".layout.swiperefresh.loaddata.LoadingActivity"
             android:exported="false" />
         <activity
+            android:name=".layout.swiperefresh.loaddata.LoadingActivity2"
+            android:exported="false" />
+        <activity
             android:name=".layout.swiperefresh.SwipeRefreshListActivity"
             android:exported="false" />
     </application>

@@ -18,7 +18,7 @@ import com.xxh.learn.ui.R
  *
  * @author mrsimple
  */
-class RefreshLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
+class    RefreshLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
     SwipeRefreshLayout(
         context, attrs
     ) {
