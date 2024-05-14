@@ -12,9 +12,10 @@ import com.xxh.learn.ui.R
 
 class LoadAdapter(// 数据源
     private var datas: MutableList<String>, // 上下文Context
-    private val context: Context, hasMore: Boolean
-) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder?>() {
+    private val context: Context,
+    hasMore: Boolean
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
     private val normalType = 0 // 第一种ViewType，正常的item
     private val footType = 1 // 第二种ViewType，底部的提示View
 
@@ -60,14 +61,15 @@ class LoadAdapter(// 数据源
     class FootHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tips: TextView =
             itemView.findViewById<View>(R.id.pull_to_refresh_loadmore_text) as TextView
+        val footerLayout: View = itemView.findViewById<View>(R.id.footer_layout)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         // 根据返回的ViewType，绑定不同的布局文件，这里只有两种
         return if (viewType == normalType) {
-            NormalHolder(LayoutInflater.from(context).inflate(R.layout.item_text_row, null))
+            NormalHolder(LayoutInflater.from(context).inflate(R.layout.item_text_row, parent,false))
         } else {
-            FootHolder(LayoutInflater.from(context).inflate(R.layout.listview_footer, null))
+            FootHolder(LayoutInflater.from(context).inflate(R.layout.listview_footer, parent,false))
         }
     }
 
@@ -77,7 +79,7 @@ class LoadAdapter(// 数据源
             holder.textView.text = datas[position]
         } else {
             // 之所以要设置可见，是因为我在没有更多数据时会隐藏了这个footView
-            (holder as FootHolder).tips.visibility = View.VISIBLE
+            (holder as FootHolder).footerLayout.visibility = View.VISIBLE
             // 只有获取数据为空时，hasMore为false，所以当我们拉到底部时基本都会首先显示“正在加载更多...”
             if (hasMore) {
                 // 不隐藏footView提示
@@ -90,18 +92,14 @@ class LoadAdapter(// 数据源
                 if (datas.size > 0) {
                     // 如果查询数据发现并没有增加时，就显示没有更多数据了
                     holder.tips.text = "没有更多数据了"
-
                     // 然后通过延时加载模拟网络请求的时间，在500ms后执行
-                    mHandler.postDelayed(object : Runnable {
-                        override fun run() {
-                            // 隐藏提示条
-                            holder.tips.visibility = View.GONE
-                            // 将fadeTips设置true
-                            isFadeTips = true
-                            // hasMore设为true是为了让再次拉到底时，会先显示正在加载更多
-                            hasMore = true
-                        }
-                    }, 500)
+                    mHandler.postDelayed({ // 隐藏提示条
+                        holder.footerLayout.visibility = View.GONE
+                        // 将fadeTips设置true
+                        isFadeTips = true
+                        // hasMore设为true是为了让再次拉到底时，会先显示正在加载更多
+                        hasMore = true
+                    }, 2000)
                 }
             }
         }

@@ -4,10 +4,11 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.xxh.learn.ui.R
@@ -19,8 +20,8 @@ class LoadingActivity2 : AppCompatActivity() {
     private lateinit var list: MutableList<String>
     private lateinit var adapter: LoadAdapter
     private var lastVisibleItem = 0
-    private val COUNT = 60
-    private lateinit var mLayoutManager: GridLayoutManager
+    private val COUNT = 20
+    private lateinit var mLayoutManager: LinearLayoutManager
     private val mHandler: Handler = Handler(Looper.getMainLooper())
 
     @SuppressLint("MissingInflatedId")
@@ -35,7 +36,7 @@ class LoadingActivity2 : AppCompatActivity() {
 
     private fun initData() {
         list = ArrayList()
-        for (i in 1..400) {
+        for (i in 1..60) {
             list.add("测试$i")
         }
     }
@@ -61,9 +62,10 @@ class LoadingActivity2 : AppCompatActivity() {
         adapter = LoadAdapter(
             getDatas(0, COUNT),
             this,
-            getDatas(0, COUNT).size > 0
+            true
         )
-        mLayoutManager = GridLayoutManager(this, 1)
+        mLayoutManager = LinearLayoutManager(this)
+        mLayoutManager.orientation = RecyclerView.VERTICAL
         recyclerView.layoutManager = mLayoutManager
         recyclerView.adapter = adapter
         recyclerView.itemAnimator = DefaultItemAnimator()
@@ -72,28 +74,30 @@ class LoadingActivity2 : AppCompatActivity() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    if (adapter.isFadeTips  && lastVisibleItem + 1 == adapter.itemCount) {
+                    lastVisibleItem = mLayoutManager.findLastVisibleItemPosition()
+                     Log.d("xxh00", "lastVisibleItem=$lastVisibleItem")
+                    if (!adapter.isFadeTips && lastVisibleItem + 1 == adapter.itemCount) {
+                        mHandler.postDelayed({
+                            updateRecyclerView(
+                                adapter.getRealLastPosition(),
+                                adapter.getRealLastPosition() + COUNT
+                            )
+                        }, 2000)
+                    }
+                    /*if (adapter.isFadeTips && lastVisibleItem + 2 == adapter.itemCount) {
                         mHandler.postDelayed({
                             updateRecyclerView(
                                 adapter.getRealLastPosition(),
                                 adapter.getRealLastPosition() + COUNT
                             )
                         }, 500)
-                    }
-                    if (adapter.isFadeTips  && lastVisibleItem + 2 == adapter.itemCount) {
-                        mHandler.postDelayed({
-                            updateRecyclerView(
-                                adapter.getRealLastPosition(),
-                                adapter.getRealLastPosition() + COUNT
-                            )
-                        }, 500)
-                    }
+                    }*/
                 }
             }
 
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-                lastVisibleItem = mLayoutManager.findLastVisibleItemPosition()
+
             }
         })
     }
