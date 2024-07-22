@@ -1,12 +1,8 @@
 package com.xxh.learn.ui
 
 import android.content.Intent
-import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.xxh.common.ListBaseActivity
+import com.xxh.learn.ui.component.StringTestActivity
 import com.xxh.learn.ui.layout.LayoutActivity
 
 class UIMainActivity : ListBaseActivity() {
@@ -24,6 +20,7 @@ class UIMainActivity : ListBaseActivity() {
 
     override fun setClickIntent(name: String): Intent? = when (name) {
         "布局" -> Intent(this, LayoutActivity::class.java)
+        "常用View" -> Intent(this, StringTestActivity::class.java)
         else -> null
     }
 }

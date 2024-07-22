@@ -19,12 +19,8 @@ class StringAdapter(private val dataSet: Array<String>) :
      * (custom ViewHolder)
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView
-
-        init {
-            // Define click listener for the ViewHolder's View
-            textView = view.findViewById(R.id.text)
-        }
+        // Define click listener for the ViewHolder's View
+        val textView: TextView = view.findViewById(R.id.text)
     }
 
     fun setItemClickCallback(itemCallback: (String) -> Unit) {

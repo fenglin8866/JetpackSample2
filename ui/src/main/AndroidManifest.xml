@@ -3,88 +3,102 @@
 
     <application>
         <activity
+            android:name=".component.StringTestActivity"
+            android:exported="false" />
+        <activity
             android:name=".layout.LayoutActivity"
             android:exported="false" />
         <activity
             android:name=".UIMainActivity"
             android:exported="false" />
-        <activity android:name=".layout.viewpager2.CardViewActivity"
+        <activity
+            android:name=".layout.viewpager2.CardViewActivity"
             android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.SAMPLE_CODE"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".layout.viewpager2.CardFragmentActivity"
+        <activity
+            android:name=".layout.viewpager2.CardFragmentActivity"
             android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.SAMPLE_CODE"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".layout.viewpager2.MutableCollectionFragmentActivity"
+        <activity
+            android:name=".layout.viewpager2.MutableCollectionFragmentActivity"
             android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.SAMPLE_CODE"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".layout.viewpager2.MutableCollectionViewActivity"
+        <activity
+            android:name=".layout.viewpager2.MutableCollectionViewActivity"
             android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.SAMPLE_CODE"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".layout.viewpager2.CardViewTabLayoutActivity"
+        <activity
+            android:name=".layout.viewpager2.CardViewTabLayoutActivity"
             android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.SAMPLE_CODE"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".layout.viewpager2.FakeDragActivity"
+        <activity
+            android:name=".layout.viewpager2.FakeDragActivity"
             android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.SAMPLE_CODE"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".layout.viewpager2.PageTransformerActivity"
+        <activity
+            android:name=".layout.viewpager2.PageTransformerActivity"
             android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.SAMPLE_CODE"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".layout.viewpager2.PreviewPagesActivity"
+        <activity
+            android:name=".layout.viewpager2.PreviewPagesActivity"
             android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.SAMPLE_CODE"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".layout.viewpager2.ParallelNestedScrollingActivity"
+        <activity
+            android:name=".layout.viewpager2.ParallelNestedScrollingActivity"
             android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.SAMPLE_CODE"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".layout.viewpager2.BrowseActivity"
+        <activity
+            android:name=".layout.viewpager2.BrowseActivity"
             android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.SAMPLE_CODE"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
         <activity
@@ -96,16 +110,14 @@
         <activity
             android:name=".layout.recyclerview.recyclersample.flower.addFlower.AddFlowerActivity"
             android:exported="false" />
-
         <activity
             android:name=".layout.recyclerview.recyclersample.logger.recyclerview.LoggerActivity"
-            android:theme="@style/AppThemeUI"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppThemeUI" />
         <activity
             android:name=".layout.swiperefresh.SwipeRefreshActivity"
-            android:theme="@style/AppThemeUI"
-            android:exported="false" />
-
+            android:exported="false"
+            android:theme="@style/AppThemeUI" />
         <activity
             android:name=".layout.swiperefresh.loaddata.LoadingActivity"
             android:exported="false" />

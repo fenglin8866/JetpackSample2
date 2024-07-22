@@ -30,5 +30,4 @@ abstract class ListBaseActivity : BaseActivity<ContentListBinding>() {
     abstract fun setData(): Array<String>
 
     abstract fun setClickIntent(name: String): Intent?
-
 }
