@@ -71,10 +71,7 @@ class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
      * Returns true if the EditTexts are not empty
      */
     fun isEntryValid(itemName: String, itemPrice: String, itemCount: String): Boolean {
-        if (itemName.isBlank() || itemPrice.isBlank() || itemCount.isBlank()) {
-            return false
-        }
-        return true
+        return !(itemName.isBlank() || itemPrice.isBlank() || itemCount.isBlank())
     }
 
     /**

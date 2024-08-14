@@ -37,7 +37,7 @@ import kotlinx.coroutines.launch
 class AddItemFragment : BaseFragment<FragmentAddItemBinding>() {
 
     private val navigationArgs: ItemDetailFragmentArgs by navArgs()
-    lateinit var mItem: Item
+    private lateinit var mItem: Item
     private var mItemId: Int = -1
 
     // Use the 'by activityViewModels()' Kotlin property delegate from the fragment-ktx artifact

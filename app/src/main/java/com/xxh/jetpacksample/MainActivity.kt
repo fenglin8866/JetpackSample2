@@ -5,10 +5,8 @@ import com.example.android.architecture.blueprints.todoapp.tasks.TasksActivity
 import com.google.samples.apps.sunflower.GardenActivity
 import com.xxh.common.ListBaseActivity
 import com.xxh.jetpacksample.ioc.IocMainActivity
-import com.xxh.jetpacksample.lifecycle.LifecycleMainActivity
 import com.xxh.jetpacksample.navigation.NavigationMainActivity
 import com.xxh.jetpacksample.room.RoomMainActivity
-import com.xxh.learn.abroadapp.MainActivity
 import com.xxh.learn.ui.UIMainActivity
 
 class MainActivity : ListBaseActivity() {
