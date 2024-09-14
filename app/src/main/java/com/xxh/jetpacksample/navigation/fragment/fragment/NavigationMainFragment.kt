@@ -41,8 +41,10 @@ class NavigationMainFragment : Fragment() {
         // Inflate the layout for this fragment
         mBinding = FragmentMainNavigationBinding.inflate(layoutInflater, container, false)
         mBinding.profile.setOnClickListener {
-            val bundle = bundleOf("pwd" to "123")
-            findNavController().navigate(R.id.action_to_profileFragment, bundle)
+            /*val bundle = bundleOf("pwd" to "123")
+            findNavController().navigate(R.id.action_to_profileFragment, bundle)*/
+            val direction=NavigationMainFragmentDirections.actionToProfileFragment("ff")
+            findNavController().navigate(direction)
         }
         mBinding.scrolling.setOnClickListener {
             findNavController().navigate(R.id.action_navigationMainFragment_to_scrollingFragment)

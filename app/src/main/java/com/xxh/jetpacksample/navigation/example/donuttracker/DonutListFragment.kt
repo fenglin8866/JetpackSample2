@@ -30,14 +30,14 @@ import com.xxh.jetpacksample.navigation.example.donuttracker.storage.DonutDataba
 /**
  * Fragment containing the RecyclerView which shows the current list of donuts being tracked.
  */
-class DonutList : Fragment() {
+class DonutListFragment : Fragment() {
 
     private lateinit var donutListViewModel: DonutListViewModel
 
     private val adapter = DonutListAdapter(
         onEdit = { donut ->
             findNavController().navigate(
-                DonutListDirections.actionDonutListToDonutEntryDialogFragment(donut.id)
+                DonutListFragmentDirections.actionDonutListToDonutEntryDialogFragment(donut.id)
             )
         },
         onDelete = { donut ->
@@ -60,7 +60,7 @@ class DonutList : Fragment() {
 
         binding.fab.setOnClickListener { fabView ->
             fabView.findNavController().navigate(
-                DonutListDirections.actionDonutListToDonutEntryDialogFragment()
+                DonutListFragmentDirections.actionDonutListToDonutEntryDialogFragment()
             )
         }
     }

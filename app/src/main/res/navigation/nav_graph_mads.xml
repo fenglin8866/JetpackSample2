@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/donutList"
-        android:name="com.xxh.jetpacksample.navigation.example.donuttracker.DonutList"
+        android:name="com.xxh.jetpacksample.navigation.example.donuttracker.DonutListFragment"
         android:label="DonutList" >
         <action
             android:id="@+id/action_donutList_to_donutEntryDialogFragment"

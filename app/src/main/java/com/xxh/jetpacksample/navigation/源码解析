@@ -1,0 +1,30 @@
+源码结构
+common层
+  核心内容：
+  图表（NavGraph），
+  目的地（NavDestination），
+  操作（NavAction，NavDirections），
+  参数（NavArgument），
+  深层链接（NavDeeplink），
+  导航选项（NavOptions），
+  返回堆栈（NavBackStackEntry）
+  导航器（Navigator）
+
+fragment层
+   fragment相关封装
+   FragmentNavigator，
+   dialogFragmentNavigator，
+   NavHostFragment
+
+runtime层
+    ActivityNavigator
+    NavHost
+    NavController
+
+ui层
+   封装UI交互相互
+   NavigationUI
+   Toolbar，Menu，CollapsingToolbarLayout
+   AppBar，BottomNavigationView
+
+compose层
