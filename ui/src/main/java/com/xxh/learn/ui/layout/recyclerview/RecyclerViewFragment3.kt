@@ -397,28 +397,28 @@ class RecyclerViewFragment3 : BaseFragment<FragmentRecyclerView3Binding>() {
 
         override fun endAnimation(item: RecyclerView.ViewHolder) {
             super.endAnimation(item)
-            if (!mAnimatorMap.isEmpty) {
+            /*if (!mAnimatorMap.) {
                 val numRunning: Int = mAnimatorMap.size
                 for (i in numRunning downTo 0) {
                     if (item === mAnimatorMap.keyAt(i)) {
                         mAnimatorMap.valueAt(i).overallAnim.cancel()
                     }
                 }
-            }
+            }*/
         }
 
         override fun isRunning(): Boolean {
-            return super.isRunning() || !mAnimatorMap.isEmpty
+            return super.isRunning()
         }
 
         override fun endAnimations() {
             super.endAnimations()
-            if (!mAnimatorMap.isEmpty) {
+            /*if (!mAnimatorMap.isEmpty) {
                 val numRunning: Int = mAnimatorMap.size
                 for (i in numRunning downTo 0) {
                     mAnimatorMap.valueAt(i).overallAnim.cancel()
                 }
-            }
+            }*/
         }
     }
 

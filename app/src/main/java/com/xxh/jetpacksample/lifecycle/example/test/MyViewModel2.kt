@@ -1,3 +1,4 @@
+/*
 package com.xxh.jetpacksample.lifecycle.example.test
 
 import androidx.lifecycle.MediatorLiveData
@@ -26,4 +27,4 @@ class MyViewModel2(
         }
 
     }
-}
+}*/
